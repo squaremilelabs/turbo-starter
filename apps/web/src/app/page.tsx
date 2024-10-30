@@ -1,14 +1,16 @@
-import { Button } from "@repo/ui/button"
-import { Card } from "@repo/ui/card"
-import { Input } from "@repo/ui/input"
+import { Button, Card, CardBody, CardHeader, Input } from "@repo/ui/components/nextui"
 
 export default function Page(): JSX.Element {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-4">
-      <h1>Turbo Starter</h1>
-      <Card className="flex flex-col gap-2 p-2" shadow="sm">
-        <Button>Button</Button>
-        <Input label="Input" variant="bordered" />
+    <div className="flex h-full w-full flex-col items-center justify-center">
+      <Card shadow="sm">
+        <CardHeader>
+          <h1 className="text-xl font-bold">Turbo Starter</h1>
+        </CardHeader>
+        <CardBody className="gap-2">
+          <Button color="primary">Button</Button>
+          <Input color="primary" label="Input" variant="bordered" />
+        </CardBody>
       </Card>
     </div>
   )

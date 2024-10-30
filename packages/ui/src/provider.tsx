@@ -1,7 +1,7 @@
 "use client"
 
-import type { NextUIProviderProps } from "@nextui-org/system"
-import { NextUIProvider } from "@nextui-org/system"
+import type { NextUIProviderProps } from "@nextui-org/react"
+import { NextUIProvider } from "@nextui-org/react"
 import type { ThemeProviderProps as NextThemeProviderProps } from "next-themes/dist/types"
 import { ThemeProvider as NextThemeProvider } from "next-themes"
 

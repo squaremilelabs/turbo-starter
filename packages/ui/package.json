@@ -11,9 +11,7 @@
     "./styles.css": "./dist/index.css",
     "./fonts": "./src/fonts.ts",
     "./provider": "./src/provider.tsx",
-    "./button": "./src/components/button.tsx",
-    "./card": "./src/components/card.tsx",
-    "./input": "./src/components/input.tsx"
+    "./components/nextui": "./src/components/nextui.tsx"
   },
   "license": "MIT",
   "scripts": {
@@ -21,6 +19,13 @@
     "lint": "eslint src/",
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
     "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nextui-org/react": "^2.4.8",
+    "framer-motion": "^11.11.10",
+    "next": "^14.2.3",
+    "next-themes": "^0.3.0",
+    "tailwind-merge": "^2.5.4"
   },
   "peerDependencies": {
     "react": "^18.2.0"
@@ -34,16 +39,5 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "5.5.4"
-  },
-  "dependencies": {
-    "@nextui-org/button": "^2.0.38",
-    "@nextui-org/card": "^2.0.34",
-    "@nextui-org/input": "^2.2.5",
-    "@nextui-org/system": "^2.2.6",
-    "@nextui-org/theme": "^2.2.11",
-    "framer-motion": "^11.11.10",
-    "next": "^14.2.3",
-    "next-themes": "^0.3.0",
-    "tailwind-merge": "^2.5.4"
   }
 }
