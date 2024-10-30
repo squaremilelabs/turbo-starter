@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge"
 import { fontsClassName } from "@repo/ui/fonts"
 
 export const metadata: Metadata = {
-  title: "time to build",
+  title: "Turbo Starter",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
