@@ -13,10 +13,28 @@ const project = resolve(process.cwd(), "tsconfig.json");
 
 module.exports = {
   extends: [
-    "@vercel/style-guide/eslint/browser",
-    "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/react",
-  ].map(require.resolve),
+    ...[
+      "@vercel/style-guide/eslint/typescript",
+      "@vercel/style-guide/eslint/browser",
+      "@vercel/style-guide/eslint/react",
+    ].map(require.resolve), 
+    "plugin:prettier/recommended"
+  ],
+  rules: {
+    "import/no-default-export": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        plugins: ["prettier-plugin-tailwindcss"],
+        semi: false,
+        printWidth: 100,
+        proseWrap: "always",
+        trailingComma: "es5",
+        quotes: true,
+        quoteProps: "consistent"
+      }
+    ]
+  },
   parserOptions: {
     project,
   },
@@ -34,10 +52,6 @@ module.exports = {
     },
   },
   ignorePatterns: ["node_modules/", "dist/", ".eslintrc.js", "**/*.css"],
-  // add rules configurations here
-  rules: {
-    "import/no-default-export": "off",
-  },
   overrides: [
     {
       files: ["*.config.js"],
