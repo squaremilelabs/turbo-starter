@@ -1,6 +1,7 @@
 # @sml/turbo-starter
 
-a super mega turbo template
+a super mega turbo template for unified business platforms
+(employee console + customer/partner portals + public website + API endpoints, etc.)
 
 - [x] **dev:** turbo + pnpm + eslint + tsconfig + next
 - [x] **ui:** tailwind + nextui
