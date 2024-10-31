@@ -2,7 +2,7 @@
 
 **a super mega turbo (monorepo) template for internal business software**
 \
-(employee console + customer/partner portals + public website + AI agents + API endpoints, etc.)
+*employee console + customer/partner portals + public website + AI agents + API endpoints, etc.*
 
 ## todos
 - [x] **dev:** turbo + pnpm + eslint + tsconfig + next
@@ -10,5 +10,5 @@
 - [ ] **auth:** clerk
 - [ ] **database:** prisma + zenstack
 - [ ] **messaging:** bird
-- [ ] **ai:** mindsdb + vercel-ai
 - [ ] **storage:** edgestore
+- [ ] **ai:** mindsdb + vercel-ai
