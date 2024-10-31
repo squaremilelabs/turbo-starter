@@ -1,8 +1,10 @@
 # @sml/turbo-starter
 
-a super mega turbo template for unified business platforms
-(employee console + customer/partner portals + public website + API endpoints, etc.)
+**a super mega turbo (monorepo) template for internal business software**
+\
+(employee console + customer/partner portals + public website + AI agents + API endpoints, etc.)
 
+## todos
 - [x] **dev:** turbo + pnpm + eslint + tsconfig + next
 - [x] **ui:** tailwind + nextui
 - [ ] **auth:** clerk
