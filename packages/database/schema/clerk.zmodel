@@ -1,0 +1,76 @@
+// --------------------------------------------------------------------------------------
+// Ghost User models from Clerk
+// --------------------------------------------------------------------------------------
+// These are not actually stored in the database, but are used to implement Zenstack's 
+// access policies
+// --------------------------------------------------------------------------------------
+
+// Partial implementation of Clerk's Backend API User
+// https://clerk.com/docs/references/backend/types/backend-user
+// Only using fields which are useful for access policies
+
+model User {
+  id                  String               @id
+  banned              Boolean
+  createdAt           DateTime
+  lastSignInAt        DateTime?
+  primaryEmailAddress String? // Stored as an object in Clerk, but transformed to a string in `prismaEnhanced`
+  primaryPhoneNumber  String? // Stored as an object in Clerk, but transformed to a string in `prismaEnhanced`
+  privateMetadata     UserPrivateMetadata?
+  publicMetadata      UserPublicMetadata?
+  unsafeMetadata      UserUnsafeMetadata?
+
+  @@deny('all', true)
+  @@auth
+  @@map("x_clerk_user")
+}
+
+// Clerk free-form Metadata objects
+// https://clerk.com/docs/users/metadata#user-metadata
+// Intended to be used to store additional info
+
+model UserPrivateMetadata {
+  id     String @id
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Special metadata keys here vvvvvvvvvv
+
+
+
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  @@deny('all', true)
+  @@map("x_clerk_user_private_metadata")
+}
+
+model UserPublicMetadata {
+  id           String   @id
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id])
+  
+  // Special metadata keys here vvvvvvvvvv
+  isAdmin      Boolean?
+  isAuthorized Boolean?
+
+
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  @@deny('all', true)
+  @@map("x_clerk_user_public_metadata")
+}
+
+model UserUnsafeMetadata {
+  id     String @id
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Special metadata keys here vvvvvvvvvv
+
+
+
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  @@deny('all', true)
+  @@map("x_clerk_user_unsafe_metadata")
+}

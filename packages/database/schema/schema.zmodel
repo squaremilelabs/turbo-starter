@@ -1,0 +1,22 @@
+import "./clerk"
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+model Item {
+  id String @id @default(cuid()) @allow('update', false)
+  createdAt       DateTime @default(now()) @allow('update', false)
+  lastUpdatedAt   DateTime @updatedAt @allow('update', false)
+
+  title String @unique
+
+  @@allow('read', true)
+  @@allow('create,update', auth() != null)
+  @@allow('delete', auth().publicMetadata.isAdmin == true)
+}

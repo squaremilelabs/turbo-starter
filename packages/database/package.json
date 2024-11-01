@@ -1,0 +1,26 @@
+{
+  "name": "@repo/database",
+  "zenstack": {
+    "schema": "schema/schema.zmodel"
+  },
+  "exports": {
+    "./prisma": "./src/prisma.ts",
+    "./prisma-enhanced": "./src/prisma-enhanced.ts"
+  },
+  "devDependencies": {
+    "@clerk/types": "^4.29.0",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "prisma": "^5.21.1",
+    "zenstack": "^2.7.4"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.1.0",
+    "@prisma/client": "^5.21.1",
+    "@types/node": "^20.11.24",
+    "@zenstackhq/runtime": "^2.7.4"
+  },
+  "peerDependencies": {
+    "@clerk/nextjs": "^6.1.0"
+  }
+}
