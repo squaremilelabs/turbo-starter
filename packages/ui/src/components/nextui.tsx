@@ -1,5 +1,18 @@
 "use client"
 
+/**
+ * Why this?
+ *
+ * To allow for customization of individual NextUI
+ * components across all consuming apps (customizations
+ * which are are more granular than updating the nextui
+ * plugin config).
+ *
+ * It also allows us to not import nextui directly
+ * inside consuming apps.
+ *
+ */
+
 import {
   extendVariants,
   Input as NextUIInput,
