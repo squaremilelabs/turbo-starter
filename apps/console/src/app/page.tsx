@@ -43,7 +43,15 @@ export default function Page(): JSX.Element {
           </Button>
         </SignOutButton>
       </SignedIn>
-      <Card classNames={{ base: "w-[500px]" }} shadow="sm">
+      <Card
+        as="form"
+        classNames={{ base: "w-[500px]" }}
+        onSubmit={(e) => {
+          e.preventDefault()
+          createItemMuation.mutate()
+        }}
+        shadow="sm"
+      >
         <CardBody className="gap-2">
           <Input
             color="primary"
@@ -56,9 +64,7 @@ export default function Page(): JSX.Element {
             color="primary"
             isDisabled={!input}
             isLoading={createItemMuation.isPending}
-            onPress={() => {
-              createItemMuation.mutate()
-            }}
+            type="submit"
           >
             Add Item
           </Button>
