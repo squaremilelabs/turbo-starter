@@ -7,8 +7,9 @@
 ## todos
 - [x] **dev:** turbo + pnpm + eslint + tsconfig + next
 - [x] **ui:** tailwind + nextui
-- [ ] **auth:** clerk
-- [ ] **database:** prisma + zenstack
+- [x] **auth:** clerk
+- [x] **database:** prisma + zenstack
 - [ ] **messaging:** bird
 - [ ] **storage:** edgestore
 - [ ] **ai:** mindsdb + vercel-ai
+- [ ] **deployment**: vercel + hosted services (clerk, neon, edgestore, etc.)

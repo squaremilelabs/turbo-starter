@@ -10,11 +10,11 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../../prisma-client"
 }
 
 /// @@allow('read', true)
-/// @@allow('create,update,delete', auth() != null)
+/// @@allow('create,update', auth() != null)
+/// @@allow('delete', auth().publicMetadata.isAdmin == true)
 model Item {
   /// @allow('update', false)
   id            String   @id() @default(cuid())

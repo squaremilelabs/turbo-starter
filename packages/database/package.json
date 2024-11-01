@@ -1,5 +1,8 @@
 {
   "name": "@repo/database",
+  "prisma": {
+    "schema": "schema/prisma/schema.prisma"
+  },
   "zenstack": {
     "schema": "schema/schema.zmodel"
   },
