@@ -9,7 +9,9 @@
 - [x] **ui:** tailwind + nextui
 - [x] **auth:** clerk
 - [x] **database:** prisma + zenstack
-- [ ] **messaging:** bird
 - [ ] **storage:** edgestore
-- [ ] **ai:** mindsdb + vercel-ai
 - [ ] **deployment**: vercel + hosted services (clerk, neon, edgestore, etc.)
+- [ ] **messaging:** bird
+- [ ] **ai:** mindsdb + vercel-ai
+- [ ] **cms:** sanity(?)
+- [ ] **workstack:** notion + akiflow
