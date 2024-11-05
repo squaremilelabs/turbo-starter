@@ -9,6 +9,17 @@ datasource db {
   url = env("DATABASE_URL")
 }
 
+plugin prisma {
+    provider = '@core/prisma'
+    output = '../generated/prisma-schema/schema.prisma'
+}
+
+plugin hooks {
+  provider = '@zenstackhq/tanstack-query'
+  output = "../generated/hooks"
+  target = "react"
+}
+
 model Item {
   id            String   @id @default(cuid()) @allow('update', false)
   createdById   String   @default(auth().id)

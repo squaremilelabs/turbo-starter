@@ -1,32 +1,19 @@
 "use client"
 
 import { Button, Card, CardBody, Input } from "@repo/ui/components/nextui"
-import { useMutation, useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { SignedIn, SignedOut, SignInButton, SignOutButton } from "@clerk/nextjs"
-import { createItem, fetchItems } from "@repo/database/item-functions"
+import { useCreateItem, useFindManyItem } from "@repo/database/hooks"
 
 export default function Page(): JSX.Element {
-  const itemsQuery = useQuery({
-    queryKey: ["items"],
-    queryFn: async () => {
-      const items = await fetchItems()
-      return items
-    },
-  })
+  const itemsQuery = useFindManyItem()
 
   const [input, setInput] = useState("")
-  const createItemMuation = useMutation({
-    mutationKey: ["create-item"],
-    mutationFn: async () => {
-      const item = await createItem({ title: input })
-      return item
-    },
-    onSuccess: async () => {
-      setInput("")
-      await itemsQuery.refetch()
-    },
-  })
+  const createItemMutation = useCreateItem()
+  const onCreateItem = (): void => {
+    createItemMutation.mutate({ data: { title: input } })
+    setInput("")
+  }
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-8">
@@ -47,7 +34,7 @@ export default function Page(): JSX.Element {
         classNames={{ base: "w-[500px]" }}
         onSubmit={(e) => {
           e.preventDefault()
-          createItemMuation.mutate()
+          onCreateItem()
         }}
         shadow="sm"
       >
@@ -62,13 +49,13 @@ export default function Page(): JSX.Element {
           <Button
             color="primary"
             isDisabled={!input}
-            isLoading={createItemMuation.isPending}
+            isLoading={createItemMutation.isPending}
             type="submit"
           >
             Add Item
           </Button>
-          {createItemMuation.isError ? (
-            <p className="text-danger">{createItemMuation.error.message}</p>
+          {createItemMutation.isError ? (
+            <p className="text-danger">{createItemMutation.error.message}</p>
           ) : null}
         </CardBody>
       </Card>

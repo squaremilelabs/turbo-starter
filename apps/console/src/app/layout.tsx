@@ -5,6 +5,7 @@ import type { Metadata } from "next"
 import { twMerge } from "tailwind-merge"
 import { fontsClassName } from "@repo/ui/fonts"
 import { ClerkProvider } from "@clerk/nextjs"
+import { Provider as DatabaseHooksProvider } from "@repo/database/hooks"
 import QueryClientProvider from "../providers/query-client"
 
 export const metadata: Metadata = {
@@ -21,9 +22,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
       >
         <body>
           <QueryClientProvider showDevTools>
-            <UIProvider nextUIProviderProps={{ className: "flex h-screen w-screen flex-col" }}>
-              {children}
-            </UIProvider>
+            <DatabaseHooksProvider value={{ endpoint: "/api/db" }}>
+              <UIProvider nextUIProviderProps={{ className: "flex h-screen w-screen flex-col" }}>
+                {children}
+              </UIProvider>
+            </DatabaseHooksProvider>
           </QueryClientProvider>
         </body>
       </html>

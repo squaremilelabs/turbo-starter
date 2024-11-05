@@ -1,7 +1,7 @@
 {
   "name": "@repo/database",
   "prisma": {
-    "schema": "schema/prisma/schema.prisma"
+    "schema": "generated/prisma-schema/schema.prisma"
   },
   "zenstack": {
     "schema": "schema/schema.zmodel"
@@ -9,20 +9,23 @@
   "exports": {
     "./prisma": "./src/prisma.ts",
     "./prisma-enhanced": "./src/prisma-enhanced.ts",
-    "./item-functions": "./src/functions/item-functions.ts"
+    "./hooks": "./src/hooks.ts"
   },
   "devDependencies": {
     "@clerk/types": "^4.29.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.11.24",
     "prisma": "^5.21.1",
     "zenstack": "^2.7.4"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.1.0",
     "@prisma/client": "^5.21.1",
-    "@types/node": "^20.11.24",
+    "@tanstack/react-query": "^5.59.19",
     "@zenstackhq/runtime": "^2.7.4",
+    "@zenstackhq/server": "^2.7.5",
+    "@zenstackhq/tanstack-query": "^2.7.5",
     "zod": "^3.23.8"
   },
   "peerDependencies": {
