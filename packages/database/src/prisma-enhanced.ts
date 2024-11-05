@@ -41,5 +41,3 @@ export async function prismaEnhanced(): Promise<PrismaEnhanced> {
   const transformedUser = transformClerkUser(clerkUser)
   return enhance(prisma, { user: transformedUser ?? undefined })
 }
-
-export * from "@zenstackhq/runtime/zod/models"

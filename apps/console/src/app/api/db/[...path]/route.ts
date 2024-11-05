@@ -1,6 +1,9 @@
-import { prismaEnhanced } from "@repo/database/prisma-enhanced"
-import { NextRequestHandler } from "@zenstackhq/server/next"
+import { databaseApiHandler } from "@repo/database/api-handler"
 
-const handler = NextRequestHandler({ getPrisma: async () => prismaEnhanced(), useAppDir: true })
-
-export { handler as DELETE, handler as GET, handler as PATCH, handler as POST, handler as PUT }
+export {
+  databaseApiHandler as DELETE,
+  databaseApiHandler as GET,
+  databaseApiHandler as PATCH,
+  databaseApiHandler as POST,
+  databaseApiHandler as PUT,
+}
