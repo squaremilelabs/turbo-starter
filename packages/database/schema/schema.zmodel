@@ -10,13 +10,14 @@ datasource db {
 }
 
 model Item {
-  id String @id @default(cuid()) @allow('update', false)
-  createdAt       DateTime @default(now()) @allow('update', false)
-  lastUpdatedAt   DateTime @updatedAt @allow('update', false)
+  id            String   @id @default(cuid()) @allow('update', false)
+  createdById   String   @default(auth().id)
+  createdAt     DateTime @default(now()) @allow('update', false)
+  lastUpdatedAt DateTime @updatedAt @allow('update', false)
 
-  title String @unique
+  title         String   @unique @trim @length(min: 1, max: 100, "Title must be between 1 and 100 characters")
 
   @@allow('read', true)
   @@allow('create,update', auth() != null)
-  @@allow('delete', auth().publicMetadata.isAdmin == true)
+  @@allow('delete', auth().publicMetadata.isAdmin == true || auth().id == createdById)
 }

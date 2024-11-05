@@ -8,7 +8,8 @@
   },
   "exports": {
     "./prisma": "./src/prisma.ts",
-    "./prisma-enhanced": "./src/prisma-enhanced.ts"
+    "./prisma-enhanced": "./src/prisma-enhanced.ts",
+    "./item-functions": "./src/functions/item-functions.ts"
   },
   "devDependencies": {
     "@clerk/types": "^4.29.0",
@@ -21,7 +22,8 @@
     "@clerk/nextjs": "^6.1.0",
     "@prisma/client": "^5.21.1",
     "@types/node": "^20.11.24",
-    "@zenstackhq/runtime": "^2.7.4"
+    "@zenstackhq/runtime": "^2.7.4",
+    "zod": "^3.23.8"
   },
   "peerDependencies": {
     "@clerk/nextjs": "^6.1.0"

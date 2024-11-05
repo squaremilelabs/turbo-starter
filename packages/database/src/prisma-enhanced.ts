@@ -8,6 +8,7 @@ import type {
   UserPublicMetadata as DBUserPublicMetadata,
   UserUnsafeMetadata as DBUserUnsafeMetadata,
 } from "@prisma/client"
+import type { InternalArgs } from "@prisma/client/runtime/library"
 import { prisma } from "./prisma"
 
 type BackendClerkUser = NonNullable<Awaited<ReturnType<typeof currentUser>>>
@@ -33,10 +34,12 @@ function transformClerkUser(user: BackendClerkUser | null): ExpandedDBUser | nul
   }
 }
 
-type PrismaEnhanced = ReturnType<typeof enhance<typeof prisma>>
+type PrismaEnhanced = ReturnType<typeof enhance<InternalArgs>>
 
 export async function prismaEnhanced(): Promise<PrismaEnhanced> {
   const clerkUser = await currentUser()
   const transformedUser = transformClerkUser(clerkUser)
   return enhance(prisma, { user: transformedUser ?? undefined })
 }
+
+export * from "@zenstackhq/runtime/zod/models"

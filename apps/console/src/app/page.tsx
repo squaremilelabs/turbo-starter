@@ -4,7 +4,7 @@ import { Button, Card, CardBody, Input } from "@repo/ui/components/nextui"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { SignedIn, SignedOut, SignInButton, SignOutButton } from "@clerk/nextjs"
-import { createItem, fetchItems } from "../functions/item-functions"
+import { createItem, fetchItems } from "@repo/database/item-functions"
 
 export default function Page(): JSX.Element {
   const itemsQuery = useQuery({
@@ -19,7 +19,7 @@ export default function Page(): JSX.Element {
   const createItemMuation = useMutation({
     mutationKey: ["create-item"],
     mutationFn: async () => {
-      const item = await createItem(input)
+      const item = await createItem({ title: input })
       return item
     },
     onSuccess: async () => {
