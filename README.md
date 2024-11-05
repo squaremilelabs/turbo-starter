@@ -12,6 +12,6 @@
 - [ ] **storage:** edgestore
 - [ ] **deployment**: vercel + hosted services (clerk, neon, edgestore, etc.)
 - [ ] **messaging:** bird
-- [ ] **ai:** mindsdb + vercel-ai
+- [ ] **ai:** vercel-ai + mindsdb(?)
 - [ ] **cms:** sanity(?)
 - [ ] **workstack:** notion + akiflow
