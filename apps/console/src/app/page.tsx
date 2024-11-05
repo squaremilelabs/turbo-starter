@@ -4,8 +4,7 @@ import { Button, Card, CardBody, Input } from "@repo/ui/components/nextui"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { SignedIn, SignedOut, SignInButton, SignOutButton } from "@clerk/nextjs"
-import { fetchItems } from "../functions/fetch-items"
-import { createItem } from "../functions/create-item"
+import { createItem, fetchItems } from "../functions/item-functions"
 
 export default function Page(): JSX.Element {
   const itemsQuery = useQuery({

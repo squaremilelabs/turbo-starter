@@ -12,7 +12,6 @@ export default function QueryClientProvider({
   children: React.ReactNode
   showDevTools?: boolean
 }): JSX.Element {
-  // eslint-disable-next-line react/hook-use-state -- no need for setClient
   const [client] = useState(new QueryClient())
 
   return (
