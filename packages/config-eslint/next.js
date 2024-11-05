@@ -15,7 +15,10 @@ module.exports = {
     "turbo"
   ],
   rules: {
+    "import/order": "error",
+    "no-console": "warn",
     "import/no-default-export": "off",
+    "react/hook-use-state": "off",
     "prettier/prettier": [
       "error",
       {

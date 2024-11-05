@@ -1,13 +1,12 @@
 import { PrismaClient } from "@prisma/client"
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- recommended by Prisma
-const prismaGlobal = () => new PrismaClient()
+const prismaGlobal = (): PrismaClient => new PrismaClient()
 
 declare const globalThis: {
   prismaGlobal: ReturnType<typeof prismaGlobal>
 } & typeof global
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- recommended by Prisma
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- additional fallback to ensure prisma is defined (recommended by Prisma)
 export const prisma = globalThis.prismaGlobal ?? prismaGlobal()
 
 if (process.env.NODE_ENV !== "production") {

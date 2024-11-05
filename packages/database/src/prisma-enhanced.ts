@@ -33,8 +33,9 @@ function transformClerkUser(user: BackendClerkUser | null): ExpandedDBUser | nul
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type -- recommended by Prisma and type is okay to be implied
-export async function prismaEnhanced() {
+type PrismaEnhanced = ReturnType<typeof enhance<typeof prisma>>
+
+export async function prismaEnhanced(): Promise<PrismaEnhanced> {
   const clerkUser = await currentUser()
   const transformedUser = transformClerkUser(clerkUser)
   return enhance(prisma, { user: transformedUser ?? undefined })
