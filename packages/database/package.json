@@ -11,7 +11,8 @@
     "./prisma-enhanced": "./src/prisma-enhanced.ts",
     "./hooks": "./src/hooks.ts",
     "./zod": "./src/zod.ts",
-    "./api-handler": "./src/api-handler.ts"
+    "./api-handler": "./src/api-handler.ts",
+    "./utils": "./src/utils.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.1.0",

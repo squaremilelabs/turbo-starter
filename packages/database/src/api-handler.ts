@@ -1,3 +1,5 @@
+/* eslint-disable no-console -- allow logs for api handler */
+
 import { NextRequestHandler } from "@zenstackhq/server/next"
 import { prismaEnhanced } from "./prisma-enhanced"
 
