@@ -12,24 +12,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
-/// @@allow('read', true)
-/// @@allow('create,update', auth() != null)
-/// @@allow('delete', auth().publicMetadata.isAdmin == true || auth().id == createdById)
 model Item {
-  /// @allow('update', false)
-  id            String   @id() @default(cuid())
-  createdById   String
-  /// @allow('update', false)
-  createdAt     DateTime @default(now())
-  /// @allow('update', false)
-  lastUpdatedAt DateTime @updatedAt()
-  /// @trim
-  /// @length(min: 1, max: 100, 'Title must be between 1 and 100 characters')
-  title         String   @unique()
+  id                    String   @id() @default(cuid())
+  created_at            DateTime @default(now()) @db.Timestamptz()
+  created_by_user_id    String
+  created_by_user_email String
+  last_updated_at       DateTime @updatedAt() @db.Timestamptz()
+  title                 String   @unique() @map("title")
+
+  @@map("items")
 }
 
-/// @@deny('all', true)
-/// @@auth
 model User {
   id                  String               @id()
   banned              Boolean
@@ -44,7 +37,6 @@ model User {
   @@map("x_clerk_user")
 }
 
-/// @@deny('all', true)
 model UserPrivateMetadata {
   id     String @id()
   userId String @unique()
@@ -53,7 +45,6 @@ model UserPrivateMetadata {
   @@map("x_clerk_user_private_metadata")
 }
 
-/// @@deny('all', true)
 model UserPublicMetadata {
   id           String   @id()
   userId       String   @unique()
@@ -64,7 +55,6 @@ model UserPublicMetadata {
   @@map("x_clerk_user_public_metadata")
 }
 
-/// @@deny('all', true)
 model UserUnsafeMetadata {
   id     String @id()
   userId String @unique()

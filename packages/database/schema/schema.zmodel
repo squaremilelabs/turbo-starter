@@ -1,34 +1,11 @@
 import "./clerk"
+import "./base"
 
-generator client {
-  provider = "prisma-client-js"
-}
+model Item extends BaseModel {
+  title String @unique @trim @length(min: 1, max: 100, "Title must be between 1 and 100 characters") @map("title")
 
-datasource db {
-  provider = "postgresql"
-  url = env("DATABASE_URL")
-}
-
-plugin prisma {
-    provider = '@core/prisma'
-    output = '../generated/prisma-schema/schema.prisma'
-}
-
-plugin hooks {
-  provider = '@zenstackhq/tanstack-query'
-  output = "../generated/hooks"
-  target = "react"
-}
-
-model Item {
-  id            String   @id @default(cuid()) @allow('update', false)
-  createdById   String   @default(auth().id)
-  createdAt     DateTime @default(now()) @allow('update', false)
-  lastUpdatedAt DateTime @updatedAt @allow('update', false)
-
-  title         String   @unique @trim @length(min: 1, max: 100, "Title must be between 1 and 100 characters")
-
+  @@map("items")
   @@allow('read', true)
   @@allow('create,update', auth() != null)
-  @@allow('delete', auth().publicMetadata.isAdmin == true || auth().id == createdById)
+  @@allow('delete', auth().publicMetadata.isAdmin == true || auth().id == created_by_user_id)
 }

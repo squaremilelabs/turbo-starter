@@ -322,7 +322,7 @@ export function useSuspenseCountItem<TArgs extends Prisma.ItemCountArgs, TQueryF
     return useSuspenseModelQuery<TQueryFnData, TData, TError>('Item', `${endpoint}/item/count`, args, options, fetch);
 }
 
-export function useCheckItem<TError = DefaultError>(args: { operation: PolicyCrudKind; where?: { id?: string; createdById?: string; title?: string }; }, options?: (Omit<UseQueryOptions<boolean, TError, boolean>, 'queryKey'> & ExtraQueryOptions)) {
+export function useCheckItem<TError = DefaultError>(args: { operation: PolicyCrudKind; where?: { id?: string; created_by_user_id?: string; created_by_user_email?: string; title?: string }; }, options?: (Omit<UseQueryOptions<boolean, TError, boolean>, 'queryKey'> & ExtraQueryOptions)) {
     const { endpoint, fetch } = getHooksContext();
     return useModelQuery<boolean, boolean, TError>('Item', `${endpoint}/item/check`, args, options, fetch);
 }

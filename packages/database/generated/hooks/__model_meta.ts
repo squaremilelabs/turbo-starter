@@ -8,17 +8,22 @@ const metadata = {
                     type: "String",
                     isId: true,
                     attributes: [{ "name": "@default", "args": [] }],
-                }, createdById: {
-                    name: "createdById",
-                    type: "String",
-                    attributes: [{ "name": "@default", "args": [] }],
-                    defaultValueProvider: $default$Item$createdById,
-                }, createdAt: {
-                    name: "createdAt",
+                }, created_at: {
+                    name: "created_at",
                     type: "DateTime",
                     attributes: [{ "name": "@default", "args": [] }],
-                }, lastUpdatedAt: {
-                    name: "lastUpdatedAt",
+                }, created_by_user_id: {
+                    name: "created_by_user_id",
+                    type: "String",
+                    attributes: [{ "name": "@default", "args": [] }],
+                    defaultValueProvider: $default$Item$created_by_user_id,
+                }, created_by_user_email: {
+                    name: "created_by_user_email",
+                    type: "String",
+                    attributes: [{ "name": "@default", "args": [] }],
+                    defaultValueProvider: $default$Item$created_by_user_email,
+                }, last_updated_at: {
+                    name: "last_updated_at",
                     type: "DateTime",
                     attributes: [{ "name": "@updatedAt", "args": [] }],
                 }, title: {
@@ -202,7 +207,11 @@ const metadata = {
     ,
     authModel: 'User'
 };
-function $default$Item$createdById(user: any): unknown {
+function $default$Item$created_by_user_id(user: any): unknown {
     return user?.id;
+}
+
+function $default$Item$created_by_user_email(user: any): unknown {
+    return user?.primaryEmailAddress;
 }
 export default metadata;

@@ -9,6 +9,8 @@
 - [x] **ui:** tailwind + nextui
 - [x] **auth:** clerk
 - [x] **database:** prisma + zenstack
+  - [ ] error parser
+  - [ ] fix ts errors in generated files
 - [ ] **storage:** edgestore
 - [ ] **deployment**: vercel + hosted services (clerk, neon, edgestore, etc.)
 - [ ] **messaging:** bird

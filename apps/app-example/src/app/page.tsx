@@ -1,10 +1,8 @@
 "use client"
-
 import { Button, Card, CardBody, Input } from "@repo/ui/components/nextui"
 import { useState } from "react"
 import { SignedIn, SignedOut, SignInButton, SignOutButton } from "@clerk/nextjs"
 import { useCreateItem, useFindManyItem } from "@repo/database/hooks"
-import { parseDatabaseQueryError } from "@repo/database/utils"
 
 export default function Page(): JSX.Element {
   const itemsQuery = useFindManyItem()
@@ -55,11 +53,7 @@ export default function Page(): JSX.Element {
           >
             Add Item
           </Button>
-          {createItemMutation.isError ? (
-            <p className="text-danger">
-              {parseDatabaseQueryError(createItemMutation.error).userMessage}
-            </p>
-          ) : null}
+          {createItemMutation.isError ? <p className="text-danger">There was an error</p> : null}
         </CardBody>
       </Card>
       <p className="mt-4 max-w-[500px] text-center">
