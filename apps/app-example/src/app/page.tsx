@@ -54,7 +54,7 @@ export default function Page(): JSX.Element {
         <div className="flex items-center space-x-2">
           <Input {...formik.getFieldProps("title")} label="New Item" />
           <Button
-            className="h-full"
+            className="h-full text-white"
             isDisabled={!formik.isValid}
             isLoading={createItemMutation.isPending}
             type="submit"
