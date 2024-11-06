@@ -1,5 +1,5 @@
 {
-  "name": "console",
+  "name": "app-example",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -21,7 +21,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.5.4",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zod-formik-adapter": "^1.3.0"
   },
   "devDependencies": {
     "@clerk/types": "^4.29.0",
