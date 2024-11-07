@@ -18,6 +18,7 @@
     },
     "db:push": {
       "dependsOn": ["db:generate"],
+      "env": ["DATABASE_URL"],
       "cache": false
     },
     "lint": {
