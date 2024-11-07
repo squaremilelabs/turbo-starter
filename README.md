@@ -11,7 +11,7 @@
 - [x] **database:** prisma + zenstack
 - [x] **state/data**: formik + react-query
 - [x] **deployment**: vercel + hosted services (clerk, neon, edgestore, etc.)
-- [ ] **storage:** edgestore
+- [x] **storage:** edgestore
 - [ ] **messaging:** bird
 - [ ] **ai:** vercel-ai + mindsdb(?)
 - [ ] **cms:** sanity(?)
