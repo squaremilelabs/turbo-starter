@@ -27,6 +27,7 @@
   "devDependencies": {
     "@clerk/types": "^4.29.0",
     "@next/eslint-plugin-next": "^14.2.3",
+    "@prisma/nextjs-monorepo-workaround-plugin": "^5.22.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-nextui-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
