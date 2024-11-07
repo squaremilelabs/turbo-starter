@@ -1,4 +1,4 @@
 module.exports = {
-  extends: ["@repo/eslint-config/react.js"],
+  extends: ["@repo/eslint-config/library.js"],
   ignorePatterns: ["generated"],
 }
