@@ -3,7 +3,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^db:generate", "^db:push"],
-      "env": ["DATABASE_URL", "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY", "CLERK_SECRET_KEY"],
+      "env": ["NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY", "CLERK_SECRET_KEY"],
       "inputs": ["$TURBO_DEFAULT$", ".env"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
@@ -17,7 +17,8 @@
       "cache": false
     },
     "db:push": {
-      "cache": false
+      "cache": false,
+      "env": ["DATABASE_URL"]
     },
     "lint": {
       "inputs": ["$TURBO_DEFAULT$"]
