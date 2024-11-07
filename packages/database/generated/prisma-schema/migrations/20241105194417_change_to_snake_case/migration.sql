@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "items" ALTER COLUMN "created_at" SET DATA TYPE TIMESTAMPTZ,
-ALTER COLUMN "last_updated_at" SET DATA TYPE TIMESTAMPTZ;

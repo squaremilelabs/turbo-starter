@@ -8,7 +8,8 @@ module.exports = {
       "@vercel/style-guide/eslint/node",
       "@vercel/style-guide/eslint/typescript",
     ].map(require.resolve), 
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "turbo"
   ],
   rules: {
     "import/order": "error",

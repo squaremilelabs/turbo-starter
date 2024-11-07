@@ -1,0 +1,3 @@
+{
+  "buildCommand": "zenstack generate && prisma migrate deploy && next build"
+}

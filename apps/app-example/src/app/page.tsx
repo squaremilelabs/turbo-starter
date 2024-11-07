@@ -38,7 +38,7 @@ export default function Page(): JSX.Element {
   })
 
   return (
-    <main className="flex h-full w-7/12 flex-col items-stretch gap-8 self-center p-16">
+    <main className="flex h-full w-full max-w-wmd flex-col items-stretch gap-8 self-center px-4 py-8">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold">App Example</h1>
         <SignedIn>
