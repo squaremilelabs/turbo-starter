@@ -9,10 +9,9 @@
 - [x] **ui:** tailwind + nextui
 - [x] **auth:** clerk
 - [x] **database:** prisma + zenstack
-  - [ ] error parser
-  - [ ] fix ts errors in generated files
+- [x] **state/data**: formik + react-query
+- [x] **deployment**: vercel + hosted services (clerk, neon, edgestore, etc.)
 - [ ] **storage:** edgestore
-- [ ] **deployment**: vercel + hosted services (clerk, neon, edgestore, etc.)
 - [ ] **messaging:** bird
 - [ ] **ai:** vercel-ai + mindsdb(?)
 - [ ] **cms:** sanity(?)
