@@ -1,8 +1,8 @@
 {
   "name": "@repo/database",
   "scripts": {
-    "db:generate": "zenstack generate",
-    "db:push": "prisma db push --skip-generate"
+    "db:generate": "npx zenstack generate",
+    "db:push": "npx prisma db push --skip-generate"
   },
   "prisma": {
     "schema": "generated/prisma-schema/schema.prisma"
