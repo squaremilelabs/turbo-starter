@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
       >
         <body>
           <QueryClientProvider showDevTools>
-            <EdgeStoreProvider>
+            <EdgeStoreProvider basePath="/api/storage">
               <UIProvider nextUIProviderProps={{ className: "flex h-screen w-screen flex-col" }}>
                 {children}
               </UIProvider>
