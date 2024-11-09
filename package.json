@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "dotenv -- turbo dev",
+    "dev": "dotenv -e .env.dev.local -- turbo dev",
+    "dev:prod": "dotenv -e .env.prod.local -- turbo dev",
     "lint": "turbo lint"
   },
   "devDependencies": {

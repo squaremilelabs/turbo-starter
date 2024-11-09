@@ -20,6 +20,11 @@
       "cache": false,
       "inputs": ["$TURBO_DEFAULT$"]
     },
+    "dev:prod": {
+      "persistent": true,
+      "cache": false,
+      "inputs": ["$TURBO_DEFAULT$"]
+    },
     "lint": {
       "inputs": ["$TURBO_DEFAULT$"]
     },
