@@ -2,7 +2,8 @@ import "./clerk"
 import "./base"
 
 model Item extends BaseModel {
-  title String @unique @trim @length(min: 1, max: 100, "Title must be between 1 and 100 characters") @map("title")
+  title String @unique @trim @length(min: 1, max: 100, "Title must be between 1 and 100 characters")
+  image_url String? @url
 
   @@map("items")
   @@allow('read', true)

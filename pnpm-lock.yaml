@@ -204,12 +204,9 @@ importers:
       '@edgestore/shared':
         specifier: ^0.2.2
         version: 0.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(zod@3.23.8)
-      '@repo/eslint-config':
+      '@repo/ui':
         specifier: workspace:*
-        version: link:../config-eslint
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../config-typescript
+        version: link:../ui
       next:
         specifier: ^14.2.3
         version: 14.2.17(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -222,6 +219,19 @@ importers:
       zod:
         specifier: ^3.23.8
         version: 3.23.8
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../config-eslint
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../config-typescript
+      '@types/node':
+        specifier: ^20.11.24
+        version: 20.17.6
+      '@types/react':
+        specifier: ^18.2.61
+        version: 18.3.12
 
   packages/ui:
     dependencies:

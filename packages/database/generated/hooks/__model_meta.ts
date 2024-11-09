@@ -29,6 +29,10 @@ const metadata = {
                 }, title: {
                     name: "title",
                     type: "String",
+                }, image_url: {
+                    name: "image_url",
+                    type: "String",
+                    isOptional: true,
                 },
             }
             , uniqueConstraints: {

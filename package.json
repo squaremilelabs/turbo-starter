@@ -2,9 +2,12 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "lint": "turbo lint",
     "dev": "dotenv -e .env.dev.local -- turbo dev",
     "dev:prod": "dotenv -e .env.prod.local -- turbo dev",
-    "lint": "turbo lint"
+    "db:generate": "turbo db:generate",
+    "db:push:dev": "dotenv -e .env.dev.local -- turbo db:push",
+    "db:push:prod": "dotenv -e .env.prod.local -- turbo db:push"
   },
   "devDependencies": {
     "dotenv-cli": "^7.4.2",
