@@ -14,23 +14,23 @@ import { prisma } from "./prisma"
 type BackendClerkUser = NonNullable<Awaited<ReturnType<typeof currentUser>>>
 
 type ExpandedDBUser = DBUser & {
-  privateMetadata: NonNullable<DBUserPrivateMetadata> | Record<string, unknown>
-  publicMetadata: NonNullable<DBUserPublicMetadata> | Record<string, unknown>
-  unsafeMetadata: NonNullable<DBUserUnsafeMetadata> | Record<string, unknown>
+  private_metadata: NonNullable<DBUserPrivateMetadata> | Record<string, unknown>
+  public_metadata: NonNullable<DBUserPublicMetadata> | Record<string, unknown>
+  unsafe_metadata: NonNullable<DBUserUnsafeMetadata> | Record<string, unknown>
 }
 
 function transformClerkUser(user: BackendClerkUser | null): ExpandedDBUser | null {
   if (!user) return null
   return {
     id: user.id,
-    createdAt: new Date(user.createdAt),
-    lastSignInAt: user.lastSignInAt ? new Date(user.lastSignInAt) : null,
-    primaryEmailAddress: user.primaryEmailAddress?.emailAddress ?? null,
-    primaryPhoneNumber: user.primaryPhoneNumber?.phoneNumber ?? null,
+    created_at: new Date(user.createdAt),
+    last_sign_in_at: user.lastSignInAt ? new Date(user.lastSignInAt) : null,
+    primary_email: user.primaryEmailAddress?.emailAddress ?? null,
+    primary_phone: user.primaryPhoneNumber?.phoneNumber ?? null,
     banned: user.banned,
-    privateMetadata: user.privateMetadata,
-    publicMetadata: user.publicMetadata,
-    unsafeMetadata: user.unsafeMetadata,
+    private_metadata: user.privateMetadata,
+    public_metadata: user.publicMetadata,
+    unsafe_metadata: user.unsafeMetadata,
   }
 }
 

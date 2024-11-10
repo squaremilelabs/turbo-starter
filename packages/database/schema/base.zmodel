@@ -24,6 +24,6 @@ abstract model BaseModel {
   id                    String   @id @default(cuid()) @allow('update', false)
   created_at            DateTime @default(now()) @db.Timestamptz @allow('update', false)
   created_by_user_id    String   @default(auth().id) @allow('update', false)
-  created_by_user_email String   @default(auth().primaryEmailAddress) @allow('update', false)
+  created_by_user_email String   @default(auth().primary_email) @allow('update', false)
   last_updated_at       DateTime @updatedAt @db.Timestamptz @allow('update', false)
 }

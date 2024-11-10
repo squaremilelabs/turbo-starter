@@ -322,7 +322,7 @@ export function useSuspenseCountUserUnsafeMetadata<TArgs extends Prisma.UserUnsa
     return useSuspenseModelQuery<TQueryFnData, TData, TError>('UserUnsafeMetadata', `${endpoint}/userUnsafeMetadata/count`, args, options, fetch);
 }
 
-export function useCheckUserUnsafeMetadata<TError = DefaultError>(args: { operation: PolicyCrudKind; where?: { id?: string; userId?: string }; }, options?: (Omit<UseQueryOptions<boolean, TError, boolean>, 'queryKey'> & ExtraQueryOptions)) {
+export function useCheckUserUnsafeMetadata<TError = DefaultError>(args: { operation: PolicyCrudKind; where?: { id?: string; user_id?: string }; }, options?: (Omit<UseQueryOptions<boolean, TError, boolean>, 'queryKey'> & ExtraQueryOptions)) {
     const { endpoint, fetch } = getHooksContext();
     return useModelQuery<boolean, boolean, TError>('UserUnsafeMetadata', `${endpoint}/userUnsafeMetadata/check`, args, options, fetch);
 }

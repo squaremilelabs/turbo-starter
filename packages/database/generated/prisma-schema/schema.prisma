@@ -25,41 +25,40 @@ model Item {
 }
 
 model User {
-  id                  String               @id()
-  banned              Boolean
-  createdAt           DateTime
-  lastSignInAt        DateTime?
-  primaryEmailAddress String?
-  primaryPhoneNumber  String?
-  privateMetadata     UserPrivateMetadata?
-  publicMetadata      UserPublicMetadata?
-  unsafeMetadata      UserUnsafeMetadata?
+  id               String               @id() @default(cuid())
+  banned           Boolean
+  created_at       DateTime             @default(now()) @db.Timestamptz()
+  last_sign_in_at  DateTime?
+  primary_email    String?
+  primary_phone    String?
+  private_metadata UserPrivateMetadata?
+  public_metadata  UserPublicMetadata?
+  unsafe_metadata  UserUnsafeMetadata?
 
   @@map("x_clerk_user")
 }
 
 model UserPrivateMetadata {
-  id     String @id()
-  userId String @unique()
-  user   User   @relation(fields: [userId], references: [id])
+  id      String @id()
+  user_id String @unique()
+  user    User   @relation(fields: [user_id], references: [id])
 
   @@map("x_clerk_user_private_metadata")
 }
 
 model UserPublicMetadata {
-  id           String   @id()
-  userId       String   @unique()
-  user         User     @relation(fields: [userId], references: [id])
-  isAdmin      Boolean?
-  isAuthorized Boolean?
+  id             String   @id()
+  user_id        String   @unique()
+  user           User     @relation(fields: [user_id], references: [id])
+  is_super_admin Boolean?
 
   @@map("x_clerk_user_public_metadata")
 }
 
 model UserUnsafeMetadata {
-  id     String @id()
-  userId String @unique()
-  user   User   @relation(fields: [userId], references: [id])
+  id      String @id()
+  user_id String @unique()
+  user    User   @relation(fields: [user_id], references: [id])
 
   @@map("x_clerk_user_unsafe_metadata")
 }

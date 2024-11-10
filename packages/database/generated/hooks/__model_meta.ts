@@ -53,38 +53,40 @@ const metadata = {
                     name: "id",
                     type: "String",
                     isId: true,
+                    attributes: [{ "name": "@default", "args": [] }],
                 }, banned: {
                     name: "banned",
                     type: "Boolean",
-                }, createdAt: {
-                    name: "createdAt",
+                }, created_at: {
+                    name: "created_at",
                     type: "DateTime",
-                }, lastSignInAt: {
-                    name: "lastSignInAt",
+                    attributes: [{ "name": "@default", "args": [] }],
+                }, last_sign_in_at: {
+                    name: "last_sign_in_at",
                     type: "DateTime",
                     isOptional: true,
-                }, primaryEmailAddress: {
-                    name: "primaryEmailAddress",
+                }, primary_email: {
+                    name: "primary_email",
                     type: "String",
                     isOptional: true,
-                }, primaryPhoneNumber: {
-                    name: "primaryPhoneNumber",
+                }, primary_phone: {
+                    name: "primary_phone",
                     type: "String",
                     isOptional: true,
-                }, privateMetadata: {
-                    name: "privateMetadata",
+                }, private_metadata: {
+                    name: "private_metadata",
                     type: "UserPrivateMetadata",
                     isDataModel: true,
                     isOptional: true,
                     backLink: 'user',
-                }, publicMetadata: {
-                    name: "publicMetadata",
+                }, public_metadata: {
+                    name: "public_metadata",
                     type: "UserPublicMetadata",
                     isDataModel: true,
                     isOptional: true,
                     backLink: 'user',
-                }, unsafeMetadata: {
-                    name: "unsafeMetadata",
+                }, unsafe_metadata: {
+                    name: "unsafe_metadata",
                     type: "UserUnsafeMetadata",
                     isDataModel: true,
                     isOptional: true,
@@ -106,8 +108,8 @@ const metadata = {
                     name: "id",
                     type: "String",
                     isId: true,
-                }, userId: {
-                    name: "userId",
+                }, user_id: {
+                    name: "user_id",
                     type: "String",
                     isForeignKey: true,
                     relationField: 'user',
@@ -115,18 +117,18 @@ const metadata = {
                     name: "user",
                     type: "User",
                     isDataModel: true,
-                    backLink: 'privateMetadata',
+                    backLink: 'private_metadata',
                     isRelationOwner: true,
-                    foreignKeyMapping: { "id": "userId" },
+                    foreignKeyMapping: { "id": "user_id" },
                 },
             }
             , uniqueConstraints: {
                 id: {
                     name: "id",
                     fields: ["id"]
-                }, userId: {
-                    name: "userId",
-                    fields: ["userId"]
+                }, user_id: {
+                    name: "user_id",
+                    fields: ["user_id"]
                 },
             }
             ,
@@ -138,8 +140,8 @@ const metadata = {
                     name: "id",
                     type: "String",
                     isId: true,
-                }, userId: {
-                    name: "userId",
+                }, user_id: {
+                    name: "user_id",
                     type: "String",
                     isForeignKey: true,
                     relationField: 'user',
@@ -147,15 +149,11 @@ const metadata = {
                     name: "user",
                     type: "User",
                     isDataModel: true,
-                    backLink: 'publicMetadata',
+                    backLink: 'public_metadata',
                     isRelationOwner: true,
-                    foreignKeyMapping: { "id": "userId" },
-                }, isAdmin: {
-                    name: "isAdmin",
-                    type: "Boolean",
-                    isOptional: true,
-                }, isAuthorized: {
-                    name: "isAuthorized",
+                    foreignKeyMapping: { "id": "user_id" },
+                }, is_super_admin: {
+                    name: "is_super_admin",
                     type: "Boolean",
                     isOptional: true,
                 },
@@ -164,9 +162,9 @@ const metadata = {
                 id: {
                     name: "id",
                     fields: ["id"]
-                }, userId: {
-                    name: "userId",
-                    fields: ["userId"]
+                }, user_id: {
+                    name: "user_id",
+                    fields: ["user_id"]
                 },
             }
             ,
@@ -178,8 +176,8 @@ const metadata = {
                     name: "id",
                     type: "String",
                     isId: true,
-                }, userId: {
-                    name: "userId",
+                }, user_id: {
+                    name: "user_id",
                     type: "String",
                     isForeignKey: true,
                     relationField: 'user',
@@ -187,18 +185,18 @@ const metadata = {
                     name: "user",
                     type: "User",
                     isDataModel: true,
-                    backLink: 'unsafeMetadata',
+                    backLink: 'unsafe_metadata',
                     isRelationOwner: true,
-                    foreignKeyMapping: { "id": "userId" },
+                    foreignKeyMapping: { "id": "user_id" },
                 },
             }
             , uniqueConstraints: {
                 id: {
                     name: "id",
                     fields: ["id"]
-                }, userId: {
-                    name: "userId",
-                    fields: ["userId"]
+                }, user_id: {
+                    name: "user_id",
+                    fields: ["user_id"]
                 },
             }
             ,
@@ -216,6 +214,6 @@ function $default$Item$created_by_user_id(user: any): unknown {
 }
 
 function $default$Item$created_by_user_email(user: any): unknown {
-    return user?.primaryEmailAddress;
+    return user?.primary_email;
 }
 export default metadata;

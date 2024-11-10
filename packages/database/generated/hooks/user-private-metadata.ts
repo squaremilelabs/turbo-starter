@@ -322,7 +322,7 @@ export function useSuspenseCountUserPrivateMetadata<TArgs extends Prisma.UserPri
     return useSuspenseModelQuery<TQueryFnData, TData, TError>('UserPrivateMetadata', `${endpoint}/userPrivateMetadata/count`, args, options, fetch);
 }
 
-export function useCheckUserPrivateMetadata<TError = DefaultError>(args: { operation: PolicyCrudKind; where?: { id?: string; userId?: string }; }, options?: (Omit<UseQueryOptions<boolean, TError, boolean>, 'queryKey'> & ExtraQueryOptions)) {
+export function useCheckUserPrivateMetadata<TError = DefaultError>(args: { operation: PolicyCrudKind; where?: { id?: string; user_id?: string }; }, options?: (Omit<UseQueryOptions<boolean, TError, boolean>, 'queryKey'> & ExtraQueryOptions)) {
     const { endpoint, fetch } = getHooksContext();
     return useModelQuery<boolean, boolean, TError>('UserPrivateMetadata', `${endpoint}/userPrivateMetadata/check`, args, options, fetch);
 }

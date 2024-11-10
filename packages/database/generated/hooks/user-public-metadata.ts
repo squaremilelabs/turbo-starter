@@ -322,7 +322,7 @@ export function useSuspenseCountUserPublicMetadata<TArgs extends Prisma.UserPubl
     return useSuspenseModelQuery<TQueryFnData, TData, TError>('UserPublicMetadata', `${endpoint}/userPublicMetadata/count`, args, options, fetch);
 }
 
-export function useCheckUserPublicMetadata<TError = DefaultError>(args: { operation: PolicyCrudKind; where?: { id?: string; userId?: string; isAdmin?: boolean; isAuthorized?: boolean }; }, options?: (Omit<UseQueryOptions<boolean, TError, boolean>, 'queryKey'> & ExtraQueryOptions)) {
+export function useCheckUserPublicMetadata<TError = DefaultError>(args: { operation: PolicyCrudKind; where?: { id?: string; user_id?: string; is_super_admin?: boolean }; }, options?: (Omit<UseQueryOptions<boolean, TError, boolean>, 'queryKey'> & ExtraQueryOptions)) {
     const { endpoint, fetch } = getHooksContext();
     return useModelQuery<boolean, boolean, TError>('UserPublicMetadata', `${endpoint}/userPublicMetadata/check`, args, options, fetch);
 }

@@ -10,29 +10,30 @@
 // Only using fields which are useful for access policies
 
 model User {
-  id                  String               @id
-  banned              Boolean
-  createdAt           DateTime
-  lastSignInAt        DateTime?
-  primaryEmailAddress String? // Stored as an object in Clerk, but transformed to a string in `prismaEnhanced`
-  primaryPhoneNumber  String? // Stored as an object in Clerk, but transformed to a string in `prismaEnhanced`
-  privateMetadata     UserPrivateMetadata?
-  publicMetadata      UserPublicMetadata?
-  unsafeMetadata      UserUnsafeMetadata?
+  id               String               @id @default(cuid())
+  banned           Boolean
+  created_at       DateTime             @default(now()) @db.Timestamptz
+  last_sign_in_at  DateTime?
+  primary_email    String? // Stored as an object in Clerk, but transformed to a string in `prismaEnhanced`
+  primary_phone    String? // Stored as an object in Clerk, but transformed to a string in `prismaEnhanced`
+  private_metadata UserPrivateMetadata?
+  public_metadata  UserPublicMetadata?
+  unsafe_metadata  UserUnsafeMetadata?
 
-  @@deny('all', true)
   @@auth
+  @@deny('all', true)
   @@map("x_clerk_user")
 }
+
 
 // Clerk free-form Metadata objects
 // https://clerk.com/docs/users/metadata#user-metadata
 // Intended to be used to store additional info
 
 model UserPrivateMetadata {
-  id     String @id
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
+  id      String @id
+  user_id String @unique
+  user    User   @relation(fields: [user_id], references: [id])
 
   // Special metadata keys here vvvvvvvvvv
 
@@ -46,12 +47,11 @@ model UserPrivateMetadata {
 
 model UserPublicMetadata {
   id           String   @id
-  userId       String   @unique
-  user         User     @relation(fields: [userId], references: [id])
+  user_id      String   @unique
+  user         User     @relation(fields: [user_id], references: [id])
   
   // Special metadata keys here vvvvvvvvvv
-  isAdmin      Boolean?
-  isAuthorized Boolean?
+  is_super_admin      Boolean?
 
 
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -61,9 +61,9 @@ model UserPublicMetadata {
 }
 
 model UserUnsafeMetadata {
-  id     String @id
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
+  id      String @id
+  user_id String @unique
+  user    User   @relation(fields: [user_id], references: [id])
 
   // Special metadata keys here vvvvvvvvvv
 
