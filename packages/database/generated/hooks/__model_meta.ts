@@ -37,8 +37,94 @@ const metadata = {
             ,
         }
         ,
-        backendClerkUser: {
-            name: 'BackendClerkUser', fields: {
+        clerkUserPublicMetadata: {
+            name: 'ClerkUserPublicMetadata', fields: {
+                userId: {
+                    name: "userId",
+                    type: "String",
+                    isId: true,
+                    isForeignKey: true,
+                    relationField: 'user',
+                }, user: {
+                    name: "user",
+                    type: "ClerkUser",
+                    isDataModel: true,
+                    backLink: 'publicMetadata',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "userId" },
+                }, is_super_admin: {
+                    name: "is_super_admin",
+                    type: "Boolean",
+                    isOptional: true,
+                },
+            }
+            , uniqueConstraints: {
+                userId: {
+                    name: "userId",
+                    fields: ["userId"]
+                },
+            }
+            ,
+        }
+        ,
+        clerkUserPrivateMetadata: {
+            name: 'ClerkUserPrivateMetadata', fields: {
+                userId: {
+                    name: "userId",
+                    type: "String",
+                    isId: true,
+                    isForeignKey: true,
+                    relationField: 'user',
+                }, user: {
+                    name: "user",
+                    type: "ClerkUser",
+                    isDataModel: true,
+                    backLink: 'privateMetadata',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "userId" },
+                }, api_key: {
+                    name: "api_key",
+                    type: "String",
+                    isOptional: true,
+                },
+            }
+            , uniqueConstraints: {
+                userId: {
+                    name: "userId",
+                    fields: ["userId"]
+                },
+            }
+            ,
+        }
+        ,
+        clerkUserUnsafeMetadata: {
+            name: 'ClerkUserUnsafeMetadata', fields: {
+                userId: {
+                    name: "userId",
+                    type: "String",
+                    isId: true,
+                    isForeignKey: true,
+                    relationField: 'user',
+                }, user: {
+                    name: "user",
+                    type: "ClerkUser",
+                    isDataModel: true,
+                    backLink: 'unsafeMetadata',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "userId" },
+                },
+            }
+            , uniqueConstraints: {
+                userId: {
+                    name: "userId",
+                    fields: ["userId"]
+                },
+            }
+            ,
+        }
+        ,
+        clerkUser: {
+            name: 'ClerkUser', fields: {
                 id: {
                     name: "id",
                     type: "String",
@@ -77,18 +163,30 @@ const metadata = {
                     name: "primaryEmailAddressId",
                     type: "String",
                     isOptional: true,
+                    isForeignKey: true,
+                    relationField: 'primaryEmailAddress',
                 }, primaryEmailAddress: {
                     name: "primaryEmailAddress",
-                    type: "Json",
+                    type: "ClerkEmailAddress",
+                    isDataModel: true,
                     isOptional: true,
+                    backLink: 'primaryForUser',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "primaryEmailAddressId" },
                 }, primaryPhoneNumberId: {
                     name: "primaryPhoneNumberId",
                     type: "String",
                     isOptional: true,
+                    isForeignKey: true,
+                    relationField: 'primaryPhoneNumber',
                 }, primaryPhoneNumber: {
                     name: "primaryPhoneNumber",
-                    type: "Json",
+                    type: "ClerkPhoneNumber",
+                    isDataModel: true,
                     isOptional: true,
+                    backLink: 'primaryForUser',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "primaryPhoneNumberId" },
                 }, primaryWeb3WalletId: {
                     name: "primaryWeb3WalletId",
                     type: "String",
@@ -123,21 +221,34 @@ const metadata = {
                     isOptional: true,
                 }, publicMetadata: {
                     name: "publicMetadata",
-                    type: "Json",
+                    type: "ClerkUserPublicMetadata",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'user',
                 }, privateMetadata: {
                     name: "privateMetadata",
-                    type: "Json",
+                    type: "ClerkUserPrivateMetadata",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'user',
                 }, unsafeMetadata: {
                     name: "unsafeMetadata",
-                    type: "Json",
+                    type: "ClerkUserUnsafeMetadata",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'user',
                 }, emailAddresses: {
                     name: "emailAddresses",
-                    type: "Json",
+                    type: "ClerkEmailAddress",
+                    isDataModel: true,
                     isArray: true,
+                    backLink: 'user',
                 }, phoneNumbers: {
                     name: "phoneNumbers",
-                    type: "Json",
+                    type: "ClerkPhoneNumber",
+                    isDataModel: true,
                     isArray: true,
+                    backLink: 'user',
                 }, web3Wallets: {
                     name: "web3Wallets",
                     type: "Json",
@@ -174,6 +285,166 @@ const metadata = {
                 id: {
                     name: "id",
                     fields: ["id"]
+                }, primaryEmailAddressId: {
+                    name: "primaryEmailAddressId",
+                    fields: ["primaryEmailAddressId"]
+                }, primaryPhoneNumberId: {
+                    name: "primaryPhoneNumberId",
+                    fields: ["primaryPhoneNumberId"]
+                },
+            }
+            ,
+        }
+        ,
+        clerkEmailAddress: {
+            name: 'ClerkEmailAddress', fields: {
+                id: {
+                    name: "id",
+                    type: "String",
+                    isId: true,
+                }, userId: {
+                    name: "userId",
+                    type: "String",
+                    isForeignKey: true,
+                    relationField: 'user',
+                }, emailAddress: {
+                    name: "emailAddress",
+                    type: "String",
+                }, verification: {
+                    name: "verification",
+                    type: "ClerkVerification",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'EmailAddress',
+                }, user: {
+                    name: "user",
+                    type: "ClerkUser",
+                    isDataModel: true,
+                    backLink: 'emailAddresses',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "userId" },
+                }, primaryForUser: {
+                    name: "primaryForUser",
+                    type: "ClerkUser",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'primaryEmailAddress',
+                },
+            }
+            , uniqueConstraints: {
+                id: {
+                    name: "id",
+                    fields: ["id"]
+                }, userId: {
+                    name: "userId",
+                    fields: ["userId"]
+                },
+            }
+            ,
+        }
+        ,
+        clerkPhoneNumber: {
+            name: 'ClerkPhoneNumber', fields: {
+                id: {
+                    name: "id",
+                    type: "String",
+                    isId: true,
+                }, userId: {
+                    name: "userId",
+                    type: "String",
+                    isForeignKey: true,
+                    relationField: 'user',
+                }, phoneNumber: {
+                    name: "phoneNumber",
+                    type: "String",
+                }, reservedForSecondFactor: {
+                    name: "reservedForSecondFactor",
+                    type: "Boolean",
+                }, defaultSecondFactor: {
+                    name: "defaultSecondFactor",
+                    type: "Boolean",
+                }, verification: {
+                    name: "verification",
+                    type: "ClerkVerification",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'phoneNumber',
+                }, user: {
+                    name: "user",
+                    type: "ClerkUser",
+                    isDataModel: true,
+                    backLink: 'phoneNumbers',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "userId" },
+                }, primaryForUser: {
+                    name: "primaryForUser",
+                    type: "ClerkUser",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'primaryPhoneNumber',
+                },
+            }
+            , uniqueConstraints: {
+                id: {
+                    name: "id",
+                    fields: ["id"]
+                }, userId: {
+                    name: "userId",
+                    fields: ["userId"]
+                },
+            }
+            ,
+        }
+        ,
+        clerkVerification: {
+            name: 'ClerkVerification', fields: {
+                id: {
+                    name: "id",
+                    type: "String",
+                    isId: true,
+                }, emailAddressId: {
+                    name: "emailAddressId",
+                    type: "String",
+                    isOptional: true,
+                    isForeignKey: true,
+                    relationField: 'EmailAddress',
+                }, phoneNumberId: {
+                    name: "phoneNumberId",
+                    type: "String",
+                    isOptional: true,
+                    isForeignKey: true,
+                    relationField: 'phoneNumber',
+                }, status: {
+                    name: "status",
+                    type: "ClerkVerificationStatus",
+                }, EmailAddress: {
+                    name: "EmailAddress",
+                    type: "ClerkEmailAddress",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'verification',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "emailAddressId" },
+                }, phoneNumber: {
+                    name: "phoneNumber",
+                    type: "ClerkPhoneNumber",
+                    isDataModel: true,
+                    isOptional: true,
+                    backLink: 'verification',
+                    isRelationOwner: true,
+                    foreignKeyMapping: { "id": "phoneNumberId" },
+                },
+            }
+            , uniqueConstraints: {
+                id: {
+                    name: "id",
+                    fields: ["id"]
+                }, emailAddressId: {
+                    name: "emailAddressId",
+                    fields: ["emailAddressId"]
+                }, phoneNumberId: {
+                    name: "phoneNumberId",
+                    fields: ["phoneNumberId"]
                 },
             }
             ,
@@ -184,6 +455,6 @@ const metadata = {
     deleteCascade: {
     }
     ,
-    authModel: 'BackendClerkUser'
+    authModel: 'ClerkUser'
 };
 export default metadata;

@@ -18,51 +18,7 @@ plugin hooks {
   target = "react"
 }
 
-/// For access policy https://clerk.com/docs/references/javascript/user/user.
-model BackendClerkUser {
-  id                        String  @id
-  passwordEnabled           Boolean
-  totpEnabled               Boolean
-  backupCodeEnabled         Boolean
-  twoFactorEnabled          Boolean
-  banned                    Boolean
-  locked                    Boolean
-  createdAt                 Int
-  updatedAt                 Int
-  imageUrl                  String
-  hasImage                  Boolean
-  primaryEmailAddressId     String?
-  primaryEmailAddress       Json?
-  primaryPhoneNumberId      String?
-  primaryPhoneNumber        Json?
-  primaryWeb3WalletId       String?
-  primaryWeb3Wallet         Json?
-  lastSignInAt              Int?
-  externalId                String?
-  username                  String?
-  firstName                 String?
-  lastName                  String?
-  fullName                  String?
-  publicMetadata            Json
-  privateMetadata           Json
-  unsafeMetadata            Json
-  emailAddresses            Json[]
-  phoneNumbers              Json[]
-  web3Wallets               Json[]
-  externalAccounts          Json[]
-  samlAccounts              Json[]
-  lastActiveAt              Int?
-  createOrganizationEnabled Boolean
-  createOrganizationsLimit  Int?
-  deleteSelfEnabled         Boolean
-  legalAcceptedAt           Int?
-
-  @@deny('all', true)
-  @@map("x_backend_clerk_user")
-  @@auth
-}
-
-abstract model ModelBase {
+abstract model BaseModel {
   id         String   @id @default(cuid()) @allow('update', false)
   created_at DateTime @default(now()) @db.Timestamptz @allow('update', false)
   updated_at DateTime @updatedAt @db.Timestamptz @allow('update', false)
