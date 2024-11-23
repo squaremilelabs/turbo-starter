@@ -1,4 +1,4 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server"
+import { clerkMiddleware, createRouteMatcher } from "@repo/auth/clerk-server-sdk"
 import { NextResponse } from "next/server"
 
 const isProtectedRoute = createRouteMatcher([

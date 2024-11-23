@@ -2,7 +2,9 @@
   "name": "@repo/database",
   "scripts": {
     "db:generate": "npx zenstack generate",
-    "db:push": "npx prisma db push --skip-generate"
+    "db:push": "npx prisma db push --skip-generate",
+    "db:push:accept": "npx prisma db push --accept-data-loss --skip-generate",
+    "db:push:force": "npx prisma db push --force-reset --skip-generate"
   },
   "prisma": {
     "schema": "generated/prisma-schema/schema.prisma"
@@ -15,6 +17,7 @@
     "./prisma-enhanced": "./src/prisma-enhanced.ts",
     "./hooks": "./src/hooks.ts",
     "./zod": "./src/zod.ts",
+    "./models": "./src/models.ts",
     "./api-handler": "./src/api-handler.ts",
     "./utils": "./src/utils.ts"
   },
@@ -29,14 +32,10 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@clerk/types": "^4.29.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^20.11.24",
     "prisma": "^5.21.1",
     "zenstack": "^2.7.4"
-  },
-  "peerDependencies": {
-    "@clerk/nextjs": "^6.1.0"
   }
 }

@@ -4,7 +4,7 @@ import "@repo/ui/styles.css"
 import type { Metadata } from "next"
 import { twMerge } from "tailwind-merge"
 import { fontsClassName } from "@repo/ui/fonts"
-import { ClerkProvider } from "@clerk/nextjs"
+import { ClerkProvider } from "@repo/auth/clerk-nextjs-sdk"
 import { EdgeStoreProvider } from "@repo/storage/react"
 import QueryClientProvider from "../providers/query-client"
 

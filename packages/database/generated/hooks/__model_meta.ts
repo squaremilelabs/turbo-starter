@@ -12,18 +12,8 @@ const metadata = {
                     name: "created_at",
                     type: "DateTime",
                     attributes: [{ "name": "@default", "args": [] }],
-                }, created_by_user_id: {
-                    name: "created_by_user_id",
-                    type: "String",
-                    attributes: [{ "name": "@default", "args": [] }],
-                    defaultValueProvider: $default$Item$created_by_user_id,
-                }, created_by_user_email: {
-                    name: "created_by_user_email",
-                    type: "String",
-                    attributes: [{ "name": "@default", "args": [] }],
-                    defaultValueProvider: $default$Item$created_by_user_email,
-                }, last_updated_at: {
-                    name: "last_updated_at",
+                }, updated_at: {
+                    name: "updated_at",
                     type: "DateTime",
                     attributes: [{ "name": "@updatedAt", "args": [] }],
                 }, title: {
@@ -47,114 +37,136 @@ const metadata = {
             ,
         }
         ,
-        user: {
-            name: 'User', fields: {
+        backendClerkUser: {
+            name: 'BackendClerkUser', fields: {
                 id: {
                     name: "id",
                     type: "String",
                     isId: true,
-                    attributes: [{ "name": "@default", "args": [] }],
+                }, passwordEnabled: {
+                    name: "passwordEnabled",
+                    type: "Boolean",
+                }, totpEnabled: {
+                    name: "totpEnabled",
+                    type: "Boolean",
+                }, backupCodeEnabled: {
+                    name: "backupCodeEnabled",
+                    type: "Boolean",
+                }, twoFactorEnabled: {
+                    name: "twoFactorEnabled",
+                    type: "Boolean",
                 }, banned: {
                     name: "banned",
                     type: "Boolean",
-                }, created_at: {
-                    name: "created_at",
-                    type: "DateTime",
-                    attributes: [{ "name": "@default", "args": [] }],
-                }, last_sign_in_at: {
-                    name: "last_sign_in_at",
-                    type: "DateTime",
-                    isOptional: true,
-                }, primary_email: {
-                    name: "primary_email",
-                    type: "String",
-                    isOptional: true,
-                }, primary_phone: {
-                    name: "primary_phone",
-                    type: "String",
-                    isOptional: true,
-                }, private_metadata: {
-                    name: "private_metadata",
-                    type: "UserPrivateMetadata",
-                    isDataModel: true,
-                    isOptional: true,
-                    backLink: 'user',
-                }, public_metadata: {
-                    name: "public_metadata",
-                    type: "UserPublicMetadata",
-                    isDataModel: true,
-                    isOptional: true,
-                    backLink: 'user',
-                }, unsafe_metadata: {
-                    name: "unsafe_metadata",
-                    type: "UserUnsafeMetadata",
-                    isDataModel: true,
-                    isOptional: true,
-                    backLink: 'user',
-                },
-            }
-            , uniqueConstraints: {
-                id: {
-                    name: "id",
-                    fields: ["id"]
-                },
-            }
-            ,
-        }
-        ,
-        userPrivateMetadata: {
-            name: 'UserPrivateMetadata', fields: {
-                id: {
-                    name: "id",
-                    type: "String",
-                    isId: true,
-                }, user_id: {
-                    name: "user_id",
-                    type: "String",
-                    isForeignKey: true,
-                    relationField: 'user',
-                }, user: {
-                    name: "user",
-                    type: "User",
-                    isDataModel: true,
-                    backLink: 'private_metadata',
-                    isRelationOwner: true,
-                    foreignKeyMapping: { "id": "user_id" },
-                },
-            }
-            , uniqueConstraints: {
-                id: {
-                    name: "id",
-                    fields: ["id"]
-                }, user_id: {
-                    name: "user_id",
-                    fields: ["user_id"]
-                },
-            }
-            ,
-        }
-        ,
-        userPublicMetadata: {
-            name: 'UserPublicMetadata', fields: {
-                id: {
-                    name: "id",
-                    type: "String",
-                    isId: true,
-                }, user_id: {
-                    name: "user_id",
-                    type: "String",
-                    isForeignKey: true,
-                    relationField: 'user',
-                }, user: {
-                    name: "user",
-                    type: "User",
-                    isDataModel: true,
-                    backLink: 'public_metadata',
-                    isRelationOwner: true,
-                    foreignKeyMapping: { "id": "user_id" },
-                }, is_super_admin: {
-                    name: "is_super_admin",
+                }, locked: {
+                    name: "locked",
                     type: "Boolean",
+                }, createdAt: {
+                    name: "createdAt",
+                    type: "Int",
+                }, updatedAt: {
+                    name: "updatedAt",
+                    type: "Int",
+                }, imageUrl: {
+                    name: "imageUrl",
+                    type: "String",
+                }, hasImage: {
+                    name: "hasImage",
+                    type: "Boolean",
+                }, primaryEmailAddressId: {
+                    name: "primaryEmailAddressId",
+                    type: "String",
+                    isOptional: true,
+                }, primaryEmailAddress: {
+                    name: "primaryEmailAddress",
+                    type: "Json",
+                    isOptional: true,
+                }, primaryPhoneNumberId: {
+                    name: "primaryPhoneNumberId",
+                    type: "String",
+                    isOptional: true,
+                }, primaryPhoneNumber: {
+                    name: "primaryPhoneNumber",
+                    type: "Json",
+                    isOptional: true,
+                }, primaryWeb3WalletId: {
+                    name: "primaryWeb3WalletId",
+                    type: "String",
+                    isOptional: true,
+                }, primaryWeb3Wallet: {
+                    name: "primaryWeb3Wallet",
+                    type: "Json",
+                    isOptional: true,
+                }, lastSignInAt: {
+                    name: "lastSignInAt",
+                    type: "Int",
+                    isOptional: true,
+                }, externalId: {
+                    name: "externalId",
+                    type: "String",
+                    isOptional: true,
+                }, username: {
+                    name: "username",
+                    type: "String",
+                    isOptional: true,
+                }, firstName: {
+                    name: "firstName",
+                    type: "String",
+                    isOptional: true,
+                }, lastName: {
+                    name: "lastName",
+                    type: "String",
+                    isOptional: true,
+                }, fullName: {
+                    name: "fullName",
+                    type: "String",
+                    isOptional: true,
+                }, publicMetadata: {
+                    name: "publicMetadata",
+                    type: "Json",
+                }, privateMetadata: {
+                    name: "privateMetadata",
+                    type: "Json",
+                }, unsafeMetadata: {
+                    name: "unsafeMetadata",
+                    type: "Json",
+                }, emailAddresses: {
+                    name: "emailAddresses",
+                    type: "Json",
+                    isArray: true,
+                }, phoneNumbers: {
+                    name: "phoneNumbers",
+                    type: "Json",
+                    isArray: true,
+                }, web3Wallets: {
+                    name: "web3Wallets",
+                    type: "Json",
+                    isArray: true,
+                }, externalAccounts: {
+                    name: "externalAccounts",
+                    type: "Json",
+                    isArray: true,
+                }, samlAccounts: {
+                    name: "samlAccounts",
+                    type: "Json",
+                    isArray: true,
+                }, lastActiveAt: {
+                    name: "lastActiveAt",
+                    type: "Int",
+                    isOptional: true,
+                }, createOrganizationEnabled: {
+                    name: "createOrganizationEnabled",
+                    type: "Boolean",
+                }, createOrganizationsLimit: {
+                    name: "createOrganizationsLimit",
+                    type: "Int",
+                    isOptional: true,
+                }, deleteSelfEnabled: {
+                    name: "deleteSelfEnabled",
+                    type: "Boolean",
+                }, legalAcceptedAt: {
+                    name: "legalAcceptedAt",
+                    type: "Int",
                     isOptional: true,
                 },
             }
@@ -162,41 +174,6 @@ const metadata = {
                 id: {
                     name: "id",
                     fields: ["id"]
-                }, user_id: {
-                    name: "user_id",
-                    fields: ["user_id"]
-                },
-            }
-            ,
-        }
-        ,
-        userUnsafeMetadata: {
-            name: 'UserUnsafeMetadata', fields: {
-                id: {
-                    name: "id",
-                    type: "String",
-                    isId: true,
-                }, user_id: {
-                    name: "user_id",
-                    type: "String",
-                    isForeignKey: true,
-                    relationField: 'user',
-                }, user: {
-                    name: "user",
-                    type: "User",
-                    isDataModel: true,
-                    backLink: 'unsafe_metadata',
-                    isRelationOwner: true,
-                    foreignKeyMapping: { "id": "user_id" },
-                },
-            }
-            , uniqueConstraints: {
-                id: {
-                    name: "id",
-                    fields: ["id"]
-                }, user_id: {
-                    name: "user_id",
-                    fields: ["user_id"]
                 },
             }
             ,
@@ -207,13 +184,6 @@ const metadata = {
     deleteCascade: {
     }
     ,
-    authModel: 'User'
+    authModel: 'BackendClerkUser'
 };
-function $default$Item$created_by_user_id(user: any): unknown {
-    return user?.id;
-}
-
-function $default$Item$created_by_user_email(user: any): unknown {
-    return user?.primary_email;
-}
 export default metadata;

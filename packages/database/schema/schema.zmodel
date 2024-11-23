@@ -1,12 +1,10 @@
-import "./clerk"
 import "./base"
 
-model Item extends BaseModel {
+model Item extends ModelBase {
   title     String  @unique @trim @length(min: 1, max: 100, "Title must be between 1 and 100 characters")
   image_url String? @url
 
   @@map("items")
   @@allow('read', true)
-  @@allow('create,update', auth().id != null)
-  @@allow('delete', auth().public_metadata.is_super_admin == true || auth().id == created_by_user_id)
+  @@allow('create,update,delete', auth().id != null)
 }

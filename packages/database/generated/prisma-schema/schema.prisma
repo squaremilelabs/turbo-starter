@@ -13,52 +13,53 @@ generator client {
 }
 
 model Item {
-  id                    String   @id() @default(cuid())
-  created_at            DateTime @default(now()) @db.Timestamptz()
-  created_by_user_id    String
-  created_by_user_email String
-  last_updated_at       DateTime @updatedAt() @db.Timestamptz()
-  title                 String   @unique()
-  image_url             String?
+  id         String   @id() @default(cuid())
+  created_at DateTime @default(now()) @db.Timestamptz()
+  updated_at DateTime @updatedAt() @db.Timestamptz()
+  title      String   @unique()
+  image_url  String?
 
   @@map("items")
 }
 
-model User {
-  id               String               @id() @default(cuid())
-  banned           Boolean
-  created_at       DateTime             @default(now()) @db.Timestamptz()
-  last_sign_in_at  DateTime?
-  primary_email    String?
-  primary_phone    String?
-  private_metadata UserPrivateMetadata?
-  public_metadata  UserPublicMetadata?
-  unsafe_metadata  UserUnsafeMetadata?
+/// For access policy https://clerk.com/docs/references/javascript/user/user.
+model BackendClerkUser {
+  id                        String  @id()
+  passwordEnabled           Boolean
+  totpEnabled               Boolean
+  backupCodeEnabled         Boolean
+  twoFactorEnabled          Boolean
+  banned                    Boolean
+  locked                    Boolean
+  createdAt                 Int
+  updatedAt                 Int
+  imageUrl                  String
+  hasImage                  Boolean
+  primaryEmailAddressId     String?
+  primaryEmailAddress       Json?
+  primaryPhoneNumberId      String?
+  primaryPhoneNumber        Json?
+  primaryWeb3WalletId       String?
+  primaryWeb3Wallet         Json?
+  lastSignInAt              Int?
+  externalId                String?
+  username                  String?
+  firstName                 String?
+  lastName                  String?
+  fullName                  String?
+  publicMetadata            Json
+  privateMetadata           Json
+  unsafeMetadata            Json
+  emailAddresses            Json[]
+  phoneNumbers              Json[]
+  web3Wallets               Json[]
+  externalAccounts          Json[]
+  samlAccounts              Json[]
+  lastActiveAt              Int?
+  createOrganizationEnabled Boolean
+  createOrganizationsLimit  Int?
+  deleteSelfEnabled         Boolean
+  legalAcceptedAt           Int?
 
-  @@map("x_clerk_user")
-}
-
-model UserPrivateMetadata {
-  id      String @id()
-  user_id String @unique()
-  user    User   @relation(fields: [user_id], references: [id])
-
-  @@map("x_clerk_user_private_metadata")
-}
-
-model UserPublicMetadata {
-  id             String   @id()
-  user_id        String   @unique()
-  user           User     @relation(fields: [user_id], references: [id])
-  is_super_admin Boolean?
-
-  @@map("x_clerk_user_public_metadata")
-}
-
-model UserUnsafeMetadata {
-  id      String @id()
-  user_id String @unique()
-  user    User   @relation(fields: [user_id], references: [id])
-
-  @@map("x_clerk_user_unsafe_metadata")
+  @@map("x_backend_clerk_user")
 }

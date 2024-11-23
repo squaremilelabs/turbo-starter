@@ -7,7 +7,11 @@
     "dev:prod": "dotenv -e .env.prod.local -- turbo dev",
     "db:generate": "turbo db:generate",
     "db:push:dev": "dotenv -e .env.dev.local -- turbo db:push",
-    "db:push:prod": "dotenv -e .env.prod.local -- turbo db:push"
+    "db:push:accept:dev": "dotenv -e .env.dev.local -- turbo db:push:accept",
+    "db:push:force:dev": "dotenv -e .env.dev.local -- turbo db:push:force",
+    "db:push:prod": "dotenv -e .env.prod.local -- turbo db:push",
+    "db:push:accept:prod": "dotenv -e .env.prod.local -- turbo db:push:accept",
+    "db:push:force:prod": "dotenv -e .env.prod.local -- turbo db:push:force"
   },
   "devDependencies": {
     "dotenv-cli": "^7.4.2",
