@@ -1,8 +1,8 @@
 import type { Config } from "tailwindcss"
-import sharedConfig from "@repo/tailwind-nextui-config"
+import sharedConfig from "@repo/ui/tailwind-config"
 
 const config: Pick<Config, "content" | "presets"> = {
-  content: ["./src/app/**/*.tsx"],
+  content: ["./src/**/*.tsx"],
   presets: [sharedConfig],
 }
 

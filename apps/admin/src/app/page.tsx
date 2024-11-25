@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, Card, CardBody, Image, Input } from "@repo/ui/components/nextui"
+import { Button, Card, CardBody, Image, Input } from "@repo/ui/nextui"
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@repo/auth/clerk-nextjs-sdk"
 import { useCreateItem, useFindManyItem } from "@repo/database/hooks"
 import { useFormik } from "formik"

@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/components/nextui"
+import { Button } from "@repo/ui/nextui"
 import type { ChangeEvent } from "react"
 
 type ButtonProps = React.ComponentProps<typeof Button>
