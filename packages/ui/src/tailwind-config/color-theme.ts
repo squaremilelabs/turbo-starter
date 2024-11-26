@@ -1,7 +1,9 @@
 import type { NextUIPluginConfig } from "@nextui-org/theme"
-import getNextUIBaseColorsFromTailwindColor from "../../lib/getNextUIBaseColorsFromTailwindColor"
-import getNextUIColorScaleFromTailwindColor from "../../lib/getNextUIColorScaleFromTailwindColor"
-import getNextUIColorScaleFromCustom from "../../lib/getNextUIColorScaleFromCustom"
+import {
+  getNextUIBaseColorsFromTailwindColor,
+  getNextUIColorScaleFromCustom,
+  getNextUIColorScaleFromTailwindColor,
+} from "../../lib/nextui-color-utils"
 
 const SML_GOLD_COLOR_SCALE = {
   "50": "#faf9ec",
