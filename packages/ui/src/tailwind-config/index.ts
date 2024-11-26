@@ -10,7 +10,7 @@ const config: Omit<Config, "content"> = {
   safelist: [
     {
       pattern:
-        /(bg|text|border|divide)-(default|primary|secondary|danger|warning|success|slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuschia|pink|rose)-(50|100|200|300|400|500|600|700|800|900|950)/,
+        /(bg|text|border|divide)-(background|content1|content2|content3|content4|default|primary|secondary|danger|warning|success|slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuschia|pink|rose)(-(50|100|200|300|400|500|600|700|800|900|950))?/,
     },
     {
       pattern: /(w|max-w|min-w)-(wxs|wsm|wmd|wlg|wxl)/,

@@ -31,10 +31,10 @@ export function getNextUIBaseColorsFromCustomColor(
       foreground: customScale["950"],
       divider: customScale["400"],
       focus: customScale["800"],
-      content1: customScale["100"],
+      content1: customScale["200"],
       content2: customScale["200"],
       content3: customScale["300"],
-      content4: customScale["400"],
+      content4: customScale["300"],
     }
   }
   // DARK MODE
@@ -44,9 +44,9 @@ export function getNextUIBaseColorsFromCustomColor(
     divider: customScale["400"],
     focus: customScale["100"],
     content1: customScale["700"],
-    content2: customScale["600"],
-    content3: customScale["500"],
-    content4: customScale["500"],
+    content2: customScale["700"],
+    content3: customScale["600"],
+    content4: customScale["600"],
   }
 }
 
@@ -97,10 +97,10 @@ export function getNextUIBaseColorsFromTailwindColor(
       foreground: tailwindColorScale["950"],
       divider: tailwindColorScale["400"],
       focus: tailwindColorScale["800"],
-      content1: tailwindColorScale["100"],
+      content1: tailwindColorScale["200"],
       content2: tailwindColorScale["200"],
       content3: tailwindColorScale["300"],
-      content4: tailwindColorScale["400"],
+      content4: tailwindColorScale["300"],
     }
   }
   return {
@@ -109,9 +109,9 @@ export function getNextUIBaseColorsFromTailwindColor(
     divider: tailwindColorScale["400"],
     focus: tailwindColorScale["100"],
     content1: tailwindColorScale["700"],
-    content2: tailwindColorScale["600"],
-    content3: tailwindColorScale["500"],
-    content4: tailwindColorScale["500"],
+    content2: tailwindColorScale["700"],
+    content3: tailwindColorScale["600"],
+    content4: tailwindColorScale["600"],
   }
 }
 
