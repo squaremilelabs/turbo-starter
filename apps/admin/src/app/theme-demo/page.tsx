@@ -2,7 +2,7 @@
 
 import { Button, Input } from "@repo/ui/components/atoms"
 import { useTheme } from "@repo/ui/next-themes"
-import { Divider, type ButtonProps, type InputProps } from "@repo/ui/nextui"
+import { type ButtonProps, type InputProps } from "@repo/ui/nextui"
 
 const backgrounds = ["background", "content1", "content2", "content3", "content4"]
 const colors: ButtonProps["color"][] = [
@@ -20,23 +20,31 @@ const buttonVariants: ButtonProps["variant"][] = [
   "ghost",
   "shadow",
   "flat",
-  "light",
 ]
 const inputVariants: InputProps["variant"][] = ["bordered", "faded", "flat", "underlined"]
+const colorScale = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
 
 export default function Palette(): JSX.Element {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { theme: activeTheme, setTheme } = useTheme()
 
   return (
     <div className="flex flex-col space-y-8 p-8">
-      <Button
-        color="default"
-        onPress={() => {
-          setTheme(resolvedTheme === "dark" ? "light" : "dark")
-        }}
-      >
-        toggle theme
-      </Button>
+      <div className="sticky top-0 z-50 flex items-center space-x-4">
+        {["light", "dark", "system"].map((theme) => {
+          return (
+            <Button
+              className="flex-grow"
+              color={activeTheme === theme ? "primary" : "default"}
+              key={theme}
+              onPress={() => {
+                setTheme(theme)
+              }}
+            >
+              {theme}
+            </Button>
+          )
+        })}
+      </div>
       <div className="grid grid-cols-5 gap-8">
         {backgrounds.map((background, index) => {
           const hasShadow = index !== 0
@@ -47,13 +55,7 @@ export default function Palette(): JSX.Element {
             >
               <h1 className="text-3xl font-bold">{background}</h1>
               <div className="border-b-2 border-divider text-xs text-divider">divider</div>
-              <Divider />
               <div className="border-b-2 border-default text-xs text-default">default</div>
-              <div className="divide-y-2">
-                <div className="text-xs">foreground</div>
-                <div className="text-xs">divider</div>
-                <div className="text-xs">foreground</div>
-              </div>
               {colors.map((color) => {
                 return (
                   <div className="flex flex-col gap-4" key={color}>
@@ -62,6 +64,18 @@ export default function Palette(): JSX.Element {
                       <h2 className={`text-${color} text-lg`}>{color}</h2>
                       <p className={`text-${color} text-base`}>{color}</p>
                       <p className={`text-${color} text-sm`}>{color}</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      {colorScale.map((scale) => {
+                        return (
+                          <div
+                            className={`border-2 border-${color}-${scale} flex items-center justify-center rounded p-1 text-sm`}
+                            key={scale}
+                          >
+                            {scale}
+                          </div>
+                        )
+                      })}
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                       {buttonVariants.map((variant) => {

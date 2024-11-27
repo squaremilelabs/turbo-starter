@@ -1,9 +1,5 @@
 import type { NextUIPluginConfig } from "@nextui-org/theme"
-import {
-  getNextUIBaseColorsFromTailwindColor,
-  getNextUIColorScaleFromCustom,
-  getNextUIColorScaleFromTailwindColor,
-} from "../../lib/nextui-color-utils"
+import { getBaseAndDefaultColors, getSemanticColorScale } from "../../lib/nextui-color-utils"
 
 const SML_GOLD_COLOR_SCALE = {
   "50": "#faf9ec",
@@ -33,29 +29,32 @@ const SML_BLUE_COLOR_SCALE = {
   "950": "#172a3a",
 }
 
+const lightBaseColors = getBaseAndDefaultColors({ twColorKey: "slate", mode: "light" })
+const darkBaseColors = getBaseAndDefaultColors({ twColorKey: "slate", mode: "dark" })
+
 const themes: NextUIPluginConfig["themes"] = {
   light: {
     extend: "light",
     colors: {
-      ...getNextUIBaseColorsFromTailwindColor("neutral", { mode: "light" }),
-      default: getNextUIColorScaleFromTailwindColor("neutral", { mode: "light" }),
-      primary: getNextUIColorScaleFromCustom(SML_GOLD_COLOR_SCALE, { mode: "light" }),
-      secondary: getNextUIColorScaleFromCustom(SML_BLUE_COLOR_SCALE, { mode: "light" }),
-      success: getNextUIColorScaleFromTailwindColor("emerald", { mode: "light" }),
-      danger: getNextUIColorScaleFromTailwindColor("red", { mode: "light" }),
-      warning: getNextUIColorScaleFromTailwindColor("yellow", { mode: "light" }),
+      ...lightBaseColors.baseColors,
+      default: lightBaseColors.defaultColors,
+      primary: getSemanticColorScale({ customColor: SML_GOLD_COLOR_SCALE, mode: "light" }),
+      secondary: getSemanticColorScale({ customColor: SML_BLUE_COLOR_SCALE, mode: "light" }),
+      success: getSemanticColorScale({ twColorKey: "emerald", mode: "light" }),
+      danger: getSemanticColorScale({ twColorKey: "red", mode: "light" }),
+      warning: getSemanticColorScale({ twColorKey: "yellow", mode: "light" }),
     },
   },
   dark: {
     extend: "dark",
     colors: {
-      ...getNextUIBaseColorsFromTailwindColor("neutral", { mode: "dark" }),
-      default: getNextUIColorScaleFromTailwindColor("neutral", { mode: "dark" }),
-      primary: getNextUIColorScaleFromCustom(SML_GOLD_COLOR_SCALE, { mode: "dark" }),
-      secondary: getNextUIColorScaleFromCustom(SML_BLUE_COLOR_SCALE, { mode: "dark" }),
-      success: getNextUIColorScaleFromTailwindColor("emerald", { mode: "dark" }),
-      danger: getNextUIColorScaleFromTailwindColor("red", { mode: "dark" }),
-      warning: getNextUIColorScaleFromTailwindColor("yellow", { mode: "dark" }),
+      ...darkBaseColors.baseColors,
+      default: darkBaseColors.defaultColors,
+      primary: getSemanticColorScale({ customColor: SML_GOLD_COLOR_SCALE, mode: "dark" }),
+      secondary: getSemanticColorScale({ customColor: SML_BLUE_COLOR_SCALE, mode: "dark" }),
+      success: getSemanticColorScale({ twColorKey: "emerald", mode: "dark" }),
+      danger: getSemanticColorScale({ twColorKey: "red", mode: "dark" }),
+      warning: getSemanticColorScale({ twColorKey: "yellow", mode: "dark" }),
     },
   },
 }
