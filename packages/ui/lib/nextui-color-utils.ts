@@ -116,16 +116,16 @@ export function mapColorScaleToBaseAndDefaultColors(
       background: colorScale["950"] ?? colorScale["900"],
       foreground: colorScale["50"],
       divider: colorScale["500"],
-      content1: colorScale["700"],
-      content2: colorScale["700"],
-      content3: colorScale["600"],
-      content4: colorScale["600"],
+      content1: colorScale["900"],
+      content2: colorScale["900"],
+      content3: colorScale["800"],
+      content4: colorScale["800"],
       focus: colorScale["100"],
     }
 
     defaultColors = {
-      50: colorScale["900"],
-      100: colorScale["900"],
+      50: colorScale["700"],
+      100: colorScale["700"],
       200: colorScale["500"],
       300: colorScale["500"],
       400: colorScale["500"],
@@ -134,7 +134,7 @@ export function mapColorScaleToBaseAndDefaultColors(
       700: colorScale["400"],
       800: colorScale["200"],
       900: colorScale["200"],
-      DEFAULT: colorScale["800"],
+      DEFAULT: colorScale["600"],
     }
   }
 
