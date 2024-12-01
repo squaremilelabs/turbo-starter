@@ -3,6 +3,7 @@
 import { Button, Input } from "@repo/ui/components/atoms"
 import { useTheme } from "@repo/ui/next-themes"
 import { type ButtonProps, type InputProps } from "@repo/ui/nextui"
+import { useEffect, useState } from "react"
 
 const backgrounds = ["background", "content1", "content2", "content3", "content4"]
 const colors: ButtonProps["color"][] = [
@@ -26,6 +27,10 @@ const colorScale = ["50", "100", "200", "300", "400", "500", "600", "700", "800"
 
 export default function Palette(): JSX.Element {
   const { theme: activeTheme, setTheme } = useTheme()
+  const [selectedTheme, setSelectedTheme] = useState<string | undefined>(undefined)
+  useEffect(() => {
+    setSelectedTheme(activeTheme)
+  }, [activeTheme])
 
   return (
     <div className="flex flex-col space-y-8 p-8">
@@ -34,7 +39,7 @@ export default function Palette(): JSX.Element {
           return (
             <Button
               className="flex-grow"
-              color={activeTheme === theme ? "primary" : "default"}
+              color={selectedTheme === theme ? "primary" : "default"}
               key={theme}
               onPress={() => {
                 setTheme(theme)
