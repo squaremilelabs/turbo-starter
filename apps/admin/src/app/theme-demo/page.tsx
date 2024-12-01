@@ -33,7 +33,7 @@ export default function Palette(): JSX.Element {
   }, [activeTheme])
 
   return (
-    <div className="flex flex-col space-y-8 p-8">
+    <main className="flex flex-col space-y-8 p-8">
       <div className="sticky top-0 z-50 flex items-center space-x-4">
         {["light", "dark", "system"].map((theme) => {
           return (
@@ -111,6 +111,6 @@ export default function Palette(): JSX.Element {
           )
         })}
       </div>
-    </div>
+    </main>
   )
 }
