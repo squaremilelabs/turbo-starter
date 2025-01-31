@@ -4,7 +4,7 @@
 
 ## todos
 - [x] **dev:** turbo + pnpm + eslint + tsconfig + next
-- [x] **ui:** tailwind + nextui
+- [x] **ui:** tailwind + heroui
 - [x] **auth:** clerk
 - [x] **database:** prisma + zenstack
 - [x] **state/data**: formik + react-query

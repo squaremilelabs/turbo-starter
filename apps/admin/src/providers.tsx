@@ -13,7 +13,7 @@ export default function Providers({ children }: { children: React.ReactNode }): 
         <DatabaseHooksProvider value={{ endpoint: "/api/db" }}>
           <EdgeStoreProvider basePath="/api/storage">
             <UIProvider
-              nextUIProviderProps={{ className: "flex h-screen w-screen flex-col overflow-auto" }}
+              heroUIProviderProps={{ className: "flex h-screen w-screen flex-col overflow-auto" }}
             >
               {children}
             </UIProvider>

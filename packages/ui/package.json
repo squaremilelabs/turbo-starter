@@ -13,7 +13,7 @@
     "./fonts": "./src/fonts/index.ts",
     "./provider": "./src/provider.tsx",
     "./lucide": "./src/lucide.ts",
-    "./nextui": "./src/nextui.ts",
+    "./heroui": "./src/heroui.ts",
     "./next-themes": "./src/next-themes.ts",
     "./components/atoms": "./src/components/atoms/index.tsx",
     "./components/molecules": "./src/components/molecules/index.tsx"
@@ -26,8 +26,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.4.8",
-    "@nextui-org/theme": "^2.2.11",
+    "@heroui/react": "2.6.14",
+    "@heroui/theme": "2.4.6",
     "framer-motion": "^11.11.10",
     "lucide-react": "^0.460.0",
     "next": "^14.2.3",

@@ -1,7 +1,7 @@
 /* eslint-disable prefer-named-capture-group -- regex rules are specific for tailwind */
 
 import type { Config } from "tailwindcss"
-import { nextui } from "@nextui-org/theme"
+import { heroui } from "@heroui/theme"
 import tailwindContainerQueries from "@tailwindcss/container-queries"
 import themes from "./color-theme"
 
@@ -54,7 +54,7 @@ const config: Omit<Config, "content"> = {
   },
   plugins: [
     tailwindContainerQueries,
-    nextui({
+    heroui({
       addCommonColors: true,
       layout: {
         radius: {

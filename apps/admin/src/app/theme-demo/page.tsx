@@ -2,7 +2,7 @@
 
 import { Button, Input } from "@repo/ui/components/atoms"
 import { useTheme } from "@repo/ui/next-themes"
-import { type ButtonProps, type InputProps } from "@repo/ui/nextui"
+import { type ButtonProps, type InputProps } from "@repo/ui/heroui"
 import { useEffect, useState } from "react"
 
 const backgrounds = ["background", "content1", "content2", "content3", "content4"]

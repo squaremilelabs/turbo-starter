@@ -1,5 +1,5 @@
-import type { NextUIPluginConfig } from "@nextui-org/theme"
-import { getBaseAndDefaultColors, getSemanticColorScale } from "../../lib/nextui-color-utils"
+import type { HeroUIPluginConfig } from "@heroui/theme"
+import { getBaseAndDefaultColors, getSemanticColorScale } from "../../lib/heroui-color-utils"
 
 const SML_GOLD_COLOR_SCALE = {
   "50": "#faf9ec",
@@ -32,7 +32,7 @@ const SML_BLUE_COLOR_SCALE = {
 const lightBaseColors = getBaseAndDefaultColors({ twColorKey: "slate", mode: "light" })
 const darkBaseColors = getBaseAndDefaultColors({ twColorKey: "slate", mode: "dark" })
 
-const themes: NextUIPluginConfig["themes"] = {
+const themes: HeroUIPluginConfig["themes"] = {
   light: {
     extend: "light",
     colors: {

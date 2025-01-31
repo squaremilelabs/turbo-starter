@@ -1,24 +1,24 @@
 "use client"
 
-import type { NextUIProviderProps } from "@nextui-org/react"
-import { NextUIProvider } from "@nextui-org/react"
+import type { HeroUIProviderProps } from "@heroui/react"
+import { HeroUIProvider } from "@heroui/react"
 import type { ThemeProviderProps as NextThemeProviderProps } from "next-themes/dist/types"
 import { ThemeProvider as NextThemeProvider } from "next-themes"
 
 export function UIProvider({
   children,
-  nextUIProviderProps,
+  heroUIProviderProps,
   nextThemeProviderProps,
 }: {
   children: React.ReactNode
-  nextUIProviderProps?: Omit<NextUIProviderProps, "children">
+  heroUIProviderProps?: Omit<HeroUIProviderProps, "children">
   nextThemeProviderProps?: Omit<NextThemeProviderProps, "children">
 }): JSX.Element {
   return (
-    <NextUIProvider {...nextUIProviderProps}>
+    <HeroUIProvider {...heroUIProviderProps}>
       <NextThemeProvider attribute="class" {...nextThemeProviderProps}>
         {children}
       </NextThemeProvider>
-    </NextUIProvider>
+    </HeroUIProvider>
   )
 }

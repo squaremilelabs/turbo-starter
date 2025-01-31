@@ -1,7 +1,7 @@
-import type { ColorScale, BaseColors } from "@nextui-org/theme"
+import type { ColorScale, BaseColors } from "@heroui/theme"
 import * as twDefaultColors from "tailwindcss/colors"
 
-type NextUIBaseColors = Partial<BaseColors>
+type HeroUIBaseColors = Partial<BaseColors>
 type DefaultColors = typeof twDefaultColors
 type TailwindDefaultColorKey = keyof DefaultColors
 
@@ -41,7 +41,7 @@ export function getSemanticColorScale(input: Input): ColorScale {
 }
 
 export function getBaseAndDefaultColors(input: Input): {
-  baseColors: NextUIBaseColors
+  baseColors: HeroUIBaseColors
   defaultColors: ColorScale
 } {
   if ("twColorKey" in input) {
@@ -80,10 +80,10 @@ export function mapColorScaleToBaseAndDefaultColors(
   colorScale: CustomScale,
   mode: "light" | "dark"
 ): {
-  baseColors: NextUIBaseColors
+  baseColors: HeroUIBaseColors
   defaultColors: ColorScale
 } {
-  let baseColors: NextUIBaseColors = {}
+  let baseColors: HeroUIBaseColors = {}
   let defaultColors: ColorScale = {}
 
   if (mode === "light") {

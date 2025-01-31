@@ -1,8 +1,8 @@
 "use client"
 
-import { Button as NextUIButton, extendVariants } from "@nextui-org/react"
+import { Button as HeroUIButton, extendVariants } from "@heroui/react"
 
-export const Button = extendVariants(NextUIButton, {
+export const Button = extendVariants(HeroUIButton, {
   defaultVariants: {
     color: "primary",
   },
